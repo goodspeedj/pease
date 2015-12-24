@@ -10,6 +10,8 @@ DROP table StudyPFCLevel;
 DROP table Person;
 DROP table Well;
 DROP table WellType;
+DROP table Site;
+DROP table Military;
 DROP table Study;
 DROP table Chemical;
 DROP table ExposureType;
@@ -46,7 +48,7 @@ CREATE table Study (
     studyEndDate    date                        not null,
     participants    int(11)                     not null,
     PRIMARY KEY (studyID),
-    FOREIGN KEY (exposureID)    REFERENCES ExposureType(exposureID) ON DELETE SET null
+    FOREIGN KEY (exposureID)    REFERENCES ExposureType (exposureID) ON DELETE SET null
 );
 
 
@@ -58,25 +60,46 @@ CREATE table WellType (
 );
 
 
+CREATE table Military (
+    militaryID      int(11)         UNSIGNED    not null auto_increment,
+    militaryBranch  varchar(20)                 not null,
+    PRIMARY KEY (militaryID)
+);
+
+
+CREATE table Site (
+    siteID          int(11)         UNSIGNED    not null auto_increment,
+    militaryID      int(11)         UNSIGNED    null,
+    siteName        varchar(30)                 not null,
+    county          varchar(30)                 not null,
+    city            varchar(30)                 not null,
+    state           char(2)                     not null,
+    PRIMARY KEY (siteID),
+    FOREIGN KEY (militaryID)    REFERENCES Military (militaryID)    ON DELETE SET null
+);
+
+
 /* Table to store data on the different Pease wells */
 CREATE table Well (
     wellID          int(11)         UNSIGNED    not null auto_increment,
     wellTypeID      int(11)         UNSIGNED    not null,
+    siteID          int(11)         UNSIGNED    not null,
     wellName        varchar(30)                 not null,
     wellLat         decimal(20,18)              not null,
     wellLong        decimal(20,18)              not null,
     wellYeild       int(4)          UNSIGNED    null,
     wellActive      char(1)                     not null,
     PRIMARY KEY (wellID),
-    FOREIGN KEY (wellTypeID)    REFERENCES WellType(wellTypeID)     ON DELETE SET null
+    FOREIGN KEY (wellTypeID)    REFERENCES WellType (wellTypeID)    ON DELETE SET null,
+    FOREIGN KEY (siteID)        REFERENCES Site (siteID)            ON DELETE SET null
 );
 
 
 /* Table to store information about people who have had their blood tested */
 CREATE table Person (
     personID        int(11)         UNSIGNED    not null auto_increment,
-    nhHHSID         varchar(10)                 not null,
-    age             int(3)          UNSIGNED    not null,
+    personRecordID  varchar(10)                 not null,
+    personAge       int(3)          UNSIGNED    not null,
     yearsExposed    int(2)          UNSIGNED    not null,
     sex             char(1)                     not null,
     PRIMARY KEY (personID)
@@ -209,6 +232,15 @@ INSERT INTO Study (exposureID, studyName, studyStartDate, studyEndDate, particip
 /* Well Type table */
 INSERT INTO WellType (wellType) VALUES ('Well');
 INSERT INTO WellType (wellType) VALUES ('Distribution Point');
+
+/* Military Branch table */
+INSERT INTO Military (militaryBranch) VALUES ('Air Force');
+INSERT INTO Military (militaryBranch) VALUES ('Navy');
+INSERT INTO Military (militaryBranch) VALUES ('Army');
+INSERT INTO Military (militaryBranch) VALUES ('Coast Guard');
+
+/* Site ID */
+INSERT INTO Site (1, 'Pease Tradeport', 'Rockingham', 'Portsmouth', 'NH');
 
 /* well table */
 INSERT INTO Well (wellTypeID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Haven', 43.076018, -70.818631, 699, 'N');
