@@ -240,7 +240,7 @@ INSERT INTO Military (militaryBranch) VALUES ('Army');
 INSERT INTO Military (militaryBranch) VALUES ('Coast Guard');
 
 /* Site ID */
-INSERT INTO Site (1, 'Pease Tradeport', 'Rockingham', 'Portsmouth', 'NH');
+INSERT INTO Site (militaryID, siteName, county, city, state) VALUES (1, 'Pease Tradeport', 'Rockingham', 'Portsmouth', 'NH');
 
 /* well table */
 INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Haven', 43.076018, -70.818631, 699, 'N');
@@ -255,8 +255,8 @@ INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('B', 'Detected in Blank');
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('D', 'duplicate sample');
 
 /* person table */
-INSERT INTO Person (nhHHSID, age, yearsExposed, sex) VALUES ('PT0576', 40, 13, 'M');
-INSERT INTO Person (nhHHSID, age, yearsExposed, sex) VALUES ('PT0577', 4, 2, 'F');
+INSERT INTO Person (personRecordID, age, yearsExposed, sex) VALUES ('PT0576', 40, 13, 'M');
+INSERT INTO Person (personRecordID, age, yearsExposed, sex) VALUES ('PT0577', 4, 2, 'F');
 
 /* address table */
 INSERT INTO Address (personID, address) VALUES (1, '325 Corporate Drive Portsmouth, NH  03801');
