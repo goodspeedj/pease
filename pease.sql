@@ -243,11 +243,11 @@ INSERT INTO Military (militaryBranch) VALUES ('Coast Guard');
 INSERT INTO Site (1, 'Pease Tradeport', 'Rockingham', 'Portsmouth', 'NH');
 
 /* well table */
-INSERT INTO Well (wellTypeID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Haven', 43.076018, -70.818631, 699, 'N');
-INSERT INTO Well (wellTypeID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Smith', 43.061068, -70.804976, 447, 'Y');
-INSERT INTO Well (wellTypeID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Harrison', 43.065879, -70.804495, 331, 'Y');
-INSERT INTO Well (wellTypeID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 'WWTP Distribution',43.083631, -70.795990, null, 'Y');
-INSERT INTO Well (wellTypeID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 'DES Office Distribution', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Haven', 43.076018, -70.818631, 699, 'N');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Smith', 43.061068, -70.804976, 447, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Harrison', 43.065879, -70.804495, 331, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 'WWTP Distribution',43.083631, -70.795990, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 'DES Office Distribution', 43.074757, -70.802534, null, 'Y');
 
 /* sample note table */
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('J', 'The result is an estimated value');
