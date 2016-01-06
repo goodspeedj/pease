@@ -18,6 +18,11 @@ For development environments instructions for Vagrant are below.
   cd /usr/local
   ln -s nginx-1.8.0 nginx
   ```
+4. Add the following to the $NGIX_HOME/conf/nginx.conf `location` node:
+
+  ```console
+  try_files $uri $uri/ /index.php?$query_string;
+  ```
 
 #### PHP
 1. Download the latest PHP source distribution
