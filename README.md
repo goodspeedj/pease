@@ -8,6 +8,7 @@
   sudo yum install pcre-devel
   ```
 3. Perform installation:
+
   ```console
   tar -zxvf nginx-1.8.0.tar.gz
   cd nginx-1.8.0
