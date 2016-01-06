@@ -3,7 +3,7 @@
 #### Nginx
 1. Download the latest Nginx Stable source distribution
 2. Ensure that PCRE libraries are installed.  If not:
-  ```console
+  ```ruby
   sudo yum install pcre-devel
   ```
 3. Perform installation:
