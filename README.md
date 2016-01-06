@@ -40,7 +40,14 @@ For development environments instructions for Vagrant are below.
   make && make test && make install
   ```
 
- #### Composer
+### Dev Environment Setup
+
+#### Virtual Box
+1. Install as per instructions: https://www.virtualbox.org/wiki/Downloads
+
+#### Vagrant
+
+#### Composer
  1. Install the latest composer: https://getcomposer.org/download/
 
    ```console
@@ -48,3 +55,22 @@ For development environments instructions for Vagrant are below.
    cp composer.phar /usr/local/bin/composer
    ```
 
+#### Laravel
+1. Install Laravel with Composer
+
+  ```console
+  composer global require "laravel/installer"
+  ```
+2. Add `~/.composer/vendor/bin` to your PATH
+
+3. Create a new project
+
+  ```console
+  laravel new pease
+  ```
+
+  If you are behind a proxy and the above command fails try
+
+  ```console
+  composer create-project --prefer-dist laravel/laravel pease
+  ```
