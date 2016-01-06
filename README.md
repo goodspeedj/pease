@@ -28,6 +28,12 @@
   ```console
   tar -jxvf php-7.0.1.tar.bz2
   cd php-7.0.1
-  ./configure --prefix=/usr/local/php-7.0.1 --enable-fpm --with-mysql --with-openssl --with-pdo-mysql --enable-mbstring
+  ./configure \
+  --prefix=/usr/local/php-7.0.1 \
+  --enable-fpm \
+  --with-mysql \
+  --with-openssl \
+  --with-pdo-mysql \
+  --enable-mbstring
   make && make test && make install
   ```
