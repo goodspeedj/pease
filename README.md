@@ -1,4 +1,6 @@
 ### Environment Setup
+These instructions will get you a working Laravel environment with Nginx and MySQL.  
+For development environments instructions for Vagrant are below.
 
 #### Nginx
 1. Download the latest Nginx Stable source distribution
@@ -17,7 +19,7 @@
   ln -s nginx-1.8.0 nginx
   ```
 
-### PHP
+#### PHP
 1. Download the latest PHP source distribution
 2. Ensure that the following libraries are installed:
   -- OpenSSL 
@@ -37,3 +39,12 @@
   --enable-mbstring
   make && make test && make install
   ```
+
+ #### Composer
+ 1. Install the latest composer: https://getcomposer.org/download/
+
+   ```console
+   curl -sS https://getcomposer.org/installer | php
+   cp composer.phar /usr/local/bin/composer
+   ```
+
