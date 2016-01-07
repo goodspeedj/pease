@@ -16,9 +16,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('map', 'MapController@index') {
-
-}
+Route::get('map', 'MapController@index');
 
 /*
 |--------------------------------------------------------------------------
