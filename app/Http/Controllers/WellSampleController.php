@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers;
-class MapController extends Controller {
+class WellSampleController extends Controller {
 	/*
 	|--------------------------------------------------------------------------
 	| Well Sample Controller
