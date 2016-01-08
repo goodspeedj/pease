@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Map</title>
+    <title>Well Sample</title>
   </head>
 
   <body>
-    <p>Map page</p>
+    <p>Well Sample page</p>
   </body>
 </html>

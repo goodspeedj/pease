@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Map</title>
+    <title>Info</title>
   </head>
 
   <body>
-    <p>Map page</p>
+    <p>Info page</p>
   </body>
 </html>
