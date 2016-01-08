@@ -16,6 +16,6 @@ class ParticipantController extends Controller {
      */
     public function index()
     {
-        return view('participant');
+        return view('pages.participant');
     }
 }

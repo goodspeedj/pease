@@ -16,6 +16,6 @@ class WellSampleController extends Controller {
      */
     public function index()
     {
-        return view('wellsample');
+        return view('pages.wellsample');
     }
 }

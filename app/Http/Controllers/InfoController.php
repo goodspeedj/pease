@@ -16,6 +16,6 @@ class InfoController extends Controller {
      */
     public function index()
     {
-        return view('info');
+        return view('pages.info');
     }
 }
