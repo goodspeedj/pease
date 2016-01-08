@@ -18,6 +18,11 @@ Route::get('/', function () {
 /*
 | Provides the route for the exposure map
 */
+Route::get('info', 'InfoController@index');
+
+/*
+| Provides the route for the exposure map
+*/
 Route::get('map', 'MapController@index');
 
 
