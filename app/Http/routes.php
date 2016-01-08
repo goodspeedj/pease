@@ -15,8 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
+/*
+| Provides the route for the exposure map
+*/
 Route::get('map', 'MapController@index');
+
+
+/*
+| Provides the route for the participant listing
+*/
+Route::get('participant', 'ParticipantController@index');
+
+
+/*
+| Provides the route for the well sample listing
+*/
+Route::get('wellsample', 'WellSampleController@index');
 
 /*
 |--------------------------------------------------------------------------
