@@ -1,5 +1,7 @@
-@extends('app')
+@extends('layouts.master')
+
+@section('title', 'Well Sample')
 
 @section('content')
-<p>Well Sample page</p>
+    <p>Well Sample</p>
 @stop

@@ -1,5 +1,7 @@
-@extends('app')
+@extends('layouts.master')
+
+@section('title', 'Info')
 
 @section('content')
-<p>Info page</p>
+    <p>Info</p>
 @stop

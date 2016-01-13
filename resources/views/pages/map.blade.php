@@ -1,5 +1,7 @@
-@extends('app')
+@extends('layouts.master')
+
+@section('title', 'Map')
 
 @section('content')
-<p>Map page</p>
+    <p>Map</p>
 @stop
