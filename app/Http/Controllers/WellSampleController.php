@@ -1,4 +1,6 @@
 <?php namespace App\Http\Controllers;
+
+use DB;
 class WellSampleController extends Controller {
     /*
     |--------------------------------------------------------------------------
@@ -16,6 +18,7 @@ class WellSampleController extends Controller {
      */
     public function index()
     {
+        $samples = DB::select('select * from WellSample', [1]);
         return view('pages.wellsample');
     }
 }
