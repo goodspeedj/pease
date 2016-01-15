@@ -3,5 +3,5 @@
 @section('title', 'Info')
 
 @section('content')
-    <p>Info</p>
+    <h2>Info: {{ $first }}  {{ $last }}</h2>
 @stop

@@ -16,6 +16,9 @@ class InfoController extends Controller {
      */
     public function index()
     {
-        return view('pages.info');
+        $name = [];
+        $name['first'] = 'Jim';
+        $name['last'] = 'Goodspeed';
+        return view('pages.info', $name);
     }
 }
