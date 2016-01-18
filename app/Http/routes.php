@@ -15,10 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/*
+| Provides the route for the chemical listing
+*/
+Route::get('chemical', 'ChemicalController@index');
+
+
 /*
 | Provides the route for the exposure map
 */
 Route::get('info', 'InfoController@index');
+
 
 /*
 | Provides the route for the exposure map
