@@ -21,7 +21,6 @@ class WellSampleController extends Controller {
     {
  
         $wellSamples = WellSample::all();
-        //return $wellSamples;
         return view('pages.wellsample', compact('wellSamples'));
     }
 }
