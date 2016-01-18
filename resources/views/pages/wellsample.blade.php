@@ -2,12 +2,14 @@
 
 @section('title', 'Well Sample')
 
-@section('custom_css', '<link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css">')
+@section('custom_css')
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+@stop
 
 @section('content')
     <p>Well Sample</p>
 
-    <table id="table" class="display" cellspacing="0" width="100%">
+    <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <th>Chemical</th>
         <th>Date</th>
@@ -30,7 +32,8 @@
 @section('custom_js')
 
     <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-    
+    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+
     <script>
     $(document).ready(function() {
         $('#table').DataTable();
