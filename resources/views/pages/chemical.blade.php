@@ -3,7 +3,7 @@
 @section('title', 'PFC Chemicals')
 
 @section('custom_css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.10/css/dataTables.bootstrap.min.css">
+    @include('partials.datatablesCSS')
 @stop
 
 @section('content')
@@ -30,8 +30,7 @@
 
 @section('custom_js')
 
-    <script src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.10/js/dataTables.bootstrap.min.js"></script>
+    @include('partials.datatablesJS')
 
     <script>
     $(document).ready(function() {
