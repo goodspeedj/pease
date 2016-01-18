@@ -41,6 +41,12 @@ Route::get('participant', 'ParticipantController@index');
 
 
 /*
+| Provides the route for the study listing
+*/
+Route::get('study', 'StudyController@index');
+
+
+/*
 | Provides the route for the well sample listing
 */
 Route::get('wellsample', 'WellSampleController@index');
