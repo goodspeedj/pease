@@ -50,6 +50,11 @@ Route::get('study', 'StudyController@index');
 | Provides the route for the well sample listing
 */
 Route::get('wellsample', 'WellSampleController@index');
+Route::get('wellsample/haven', 'WellSampleController@haven');
+Route::get('wellsample/smith', 'WellSampleController@smith');
+Route::get('wellsample/harrison', 'WellSampleController@harrison');
+Route::get('wellsample/wwtp', 'WellSampleController@wwtp');
+Route::get('wellsample/des', 'WellSampleController@des');
 
 /*
 |--------------------------------------------------------------------------
