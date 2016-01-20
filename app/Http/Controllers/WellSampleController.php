@@ -24,45 +24,62 @@ class WellSampleController extends Controller {
     }
 
 
+    /**
+     * Show the well sample records for Haven
+     *
+     * @return \Illuminate\View\View
+     */
     public function haven() 
     {
-        $wellSamples = DB::table('WellSample')
-            ->select(DB::raw("sampleDate,
-                    max(if(chemID=1, pfcLevel, ' ')) as 'PFOA', max(if(chemID=1, noteAbr, ' ')) as 'PFOANote',
-                    max(if(chemID=2, pfcLevel, ' ')) as 'PFOS', max(if(chemID=2, noteAbr, ' ')) as 'PFOSNote',
-                    max(if(chemID=3, pfcLevel, ' ')) as 'PFHxS', max(if(chemID=3, noteAbr, ' ')) as 'PFHxSNote',
-                    max(if(chemID=5, pfcLevel, ' ')) as 'PFOSA', max(if(chemID=5, noteAbr, ' ')) as 'PFOSANote',
-                    max(if(chemID=6, pfcLevel, ' ')) as 'PFNA', max(if(chemID=6, noteAbr, ' ')) as 'PFNANote',
-                    max(if(chemID=8, pfcLevel, ' ')) as 'PFPeA', max(if(chemID=8, noteAbr, ' ')) as 'PFPeANote',
-                    max(if(chemID=9, pfcLevel, ' ')) as 'PFHxA', max(if(chemID=9, noteAbr, ' ')) as 'PFHxANote',
-                    max(if(chemID=10, pfcLevel, ' ')) as 'PFBA', max(if(chemID=10, noteAbr, ' ')) as 'PFBANote'
-                "))
-            ->leftJoin('SampleNote', 'WellSample.noteID', '=', 'SampleNote.noteID')
-            ->where('wellID', '=', 1)
-            ->groupBy('sampleDate')
-            ->get();
-
+        $wellSamples = WellSample::crosstab(1)->get();
         return view('pages.wellsample', compact('wellSamples'));
     }
 
+
+    /**
+     * Show the well sample records for Smith
+     *
+     * @return \Illuminate\View\View
+     */
     public function smith() 
     {
-        $wellSamples = DB::table('WellSample')
-            ->select(DB::raw("sampleDate,
-                    max(if(chemID=1, pfcLevel, ' ')) as 'PFOA', max(if(chemID=1, noteAbr, ' ')) as 'PFOANote',
-                    max(if(chemID=2, pfcLevel, ' ')) as 'PFOS', max(if(chemID=2, noteAbr, ' ')) as 'PFOSNote',
-                    max(if(chemID=3, pfcLevel, ' ')) as 'PFHxS', max(if(chemID=3, noteAbr, ' ')) as 'PFHxSNote',
-                    max(if(chemID=5, pfcLevel, ' ')) as 'PFOSA', max(if(chemID=5, noteAbr, ' ')) as 'PFOSANote',
-                    max(if(chemID=6, pfcLevel, ' ')) as 'PFNA', max(if(chemID=6, noteAbr, ' ')) as 'PFNANote',
-                    max(if(chemID=8, pfcLevel, ' ')) as 'PFPeA', max(if(chemID=8, noteAbr, ' ')) as 'PFPeANote',
-                    max(if(chemID=9, pfcLevel, ' ')) as 'PFHxA', max(if(chemID=9, noteAbr, ' ')) as 'PFHxANote',
-                    max(if(chemID=10, pfcLevel, ' ')) as 'PFBA', max(if(chemID=10, noteAbr, ' ')) as 'PFBANote'
-                "))
-            ->leftJoin('SampleNote', 'WellSample.noteID', '=', 'SampleNote.noteID')
-            ->where('wellID', '=', 2)
-            ->groupBy('sampleDate')
-            ->get();
+        $wellSamples = WellSample::crosstab(2)->get();        
+        return view('pages.wellsample', compact('wellSamples'));
+    }
 
+
+    /**
+     * Show the well sample records for Harrison
+     *
+     * @return \Illuminate\View\View
+     */
+    public function harrison() 
+    {
+        $wellSamples = WellSample::crosstab(3)->get();        
+        return view('pages.wellsample', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for WWTP
+     *
+     * @return \Illuminate\View\View
+     */
+    public function wwtp() 
+    {
+        $wellSamples = WellSample::crosstab(4)->get();        
+        return view('pages.wellsample', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for DES office
+     *
+     * @return \Illuminate\View\View
+     */
+    public function des() 
+    {
+        $wellSamples = WellSample::crosstab(5)->get();        
         return view('pages.wellsample', compact('wellSamples'));
     }
 }
