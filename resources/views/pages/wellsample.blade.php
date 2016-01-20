@@ -9,6 +9,27 @@
 @section('content')
     <h3>Well Testing Samples</h3>
 
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="wells" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Wells
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="wells">
+        <li><a href="haven">Haven</a></li>
+        <li><a href="smith">Smith</a></li>
+        <li><a href="harrison">Harrison</a></li>
+        <li><a href="wwtp">WWTP</a></li>
+        <li><a href="des">DES</a></li>
+      </ul>
+    </div>
+
+    <script>
+      var pathname = window.location.pathname;
+      alert(pathname);
+    </script>
+
+    <p>&nbsp;</p>
+
     <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
       <thead>
         <th>Date</th>
@@ -61,6 +82,7 @@
             "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]
         } );
     } );
+
     </script>
 
 @stop
