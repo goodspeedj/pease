@@ -5,9 +5,9 @@ use pease;
 -- ******************************************************
 DROP table Address;
 DROP table WellSample;
-DROP table PersonPFCLevel;
+DROP table ParticipantPFCLevel;
 DROP table StudyPFCLevel;
-DROP table Person;
+DROP table Participant;
 DROP table Well;
 DROP table WellType;
 DROP table Site;
@@ -96,13 +96,13 @@ CREATE table Well (
 
 
 /* Table to store information about people who have had their blood tested */
-CREATE table Person (
-    personID        int(11)         UNSIGNED    not null auto_increment,
-    personRecordID  varchar(10)                 not null,
-    personAge       int(3)          UNSIGNED    not null,
-    yearsExposed    int(2)          UNSIGNED    not null,
-    sex             char(1)                     not null,
-    PRIMARY KEY (personID)
+CREATE table Participant (
+    participantID       int(11)         UNSIGNED    not null auto_increment,
+    participantRecordID varchar(10)                 not null,
+    participantAge      int(3)          UNSIGNED    not null,
+    yearsExposed        int(2)          UNSIGNED    not null,
+    sex                 char(1)                     not null,
+    PRIMARY KEY (participantID)
 );
 
 
@@ -126,13 +126,13 @@ CREATE table StudyPFCLevel (
 
 
 /* Table to store PFC information about people who have had their blood tested */
-CREATE table PersonPFCLevel (
-    personID        int(11)         UNSIGNED    not null auto_increment,
+CREATE table ParticipantPFCLevel (
+    participantID   int(11)         UNSIGNED    not null auto_increment,
     chemID          int(11)         UNSIGNED    not null,
     pfcLevel        decimal(12,6)   UNSIGNED    not null,
-    PRIMARY KEY (personID, chemID),
-    FOREIGN KEY (personID)  REFERENCES Person (personID)            ON DELETE CASCADE,
-    FOREIGN KEY (chemID)    REFERENCES Chemical (chemID)            ON DELETE SET null
+    PRIMARY KEY (participantID, chemID),
+    FOREIGN KEY (participantID)     REFERENCES Participant (participantID)  ON DELETE CASCADE,
+    FOREIGN KEY (chemID)            REFERENCES Chemical (chemID)            ON DELETE SET null
 );
 
 
@@ -163,10 +163,10 @@ CREATE table WellSample (
 /* Table to store the location of where the people on Pease were exposed */
 CREATE table Address (
     addressID       int(11)         UNSIGNED    not null auto_increment,
-    personID        int(11)         UNSIGNED    not null,
+    participantID   int(11)         UNSIGNED    not null,
     address         varchar(45)                 not null,
     PRIMARY KEY (addressID),
-    FOREIGN KEY (personID)  REFERENCES Person (personID)            ON DELETE CASCADE
+    FOREIGN KEY (participantID)     REFERENCES Participant (participantID)  ON DELETE CASCADE
 );
 
 
@@ -184,7 +184,7 @@ BEGIN
   END IF;
 END
 //
-CREATE TRIGGER trig_YN_Person_sex BEFORE INSERT ON Person
+CREATE TRIGGER trig_YN_Participant_sex BEFORE INSERT ON Participant
 FOR EACH ROW
 BEGIN
   IF (NEW.sex REGEXP '^M|F$') = 0 THEN
@@ -254,33 +254,33 @@ INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('J', 'The result is an estim
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('B', 'Detected in Blank');
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('D', 'duplicate sample');
 
-/* person table */
-INSERT INTO Person (personRecordID, age, yearsExposed, sex) VALUES ('PT0576', 40, 13, 'M');
-INSERT INTO Person (personRecordID, age, yearsExposed, sex) VALUES ('PT0577', 4, 2, 'F');
+/* participant table */
+INSERT INTO Participant (participantRecordID, age, yearsExposed, sex) VALUES ('PT0576', 40, 13, 'M');
+INSERT INTO Participant (participantRecordID, age, yearsExposed, sex) VALUES ('PT0577', 4, 2, 'F');
 
 /* address table */
-INSERT INTO Address (personID, address) VALUES (1, '325 Corporate Drive Portsmouth, NH  03801');
-INSERT INTO Address (personID, address) VALUES (2, '81 New Hampshire Avenue Portsmouth, NH 03801');
+INSERT INTO Address (participantID, address) VALUES (1, '325 Corporate Drive Portsmouth, NH  03801');
+INSERT INTO Address (participantID, address) VALUES (2, '81 New Hampshire Avenue Portsmouth, NH 03801');
 
-/* person PFC level table */
-INSERT INTO PersonPFCLevel VALUES (1, 1, 2.6);
-INSERT INTO PersonPFCLevel VALUES (1, 2, 12.7);
-INSERT INTO PersonPFCLevel VALUES (1, 3, 6.5);
-INSERT INTO PersonPFCLevel VALUES (1, 4, 0);
-INSERT INTO PersonPFCLevel VALUES (1, 5, 0);
-INSERT INTO PersonPFCLevel VALUES (1, 6, .9);
-INSERT INTO PersonPFCLevel VALUES (1, 7, .2);
-INSERT INTO PersonPFCLevel VALUES (1, 8, .2);
-INSERT INTO PersonPFCLevel VALUES (1, 9, 0);
-INSERT INTO PersonPFCLevel VALUES (2, 1, 7.2);
-INSERT INTO PersonPFCLevel VALUES (2, 2, 10.5);
-INSERT INTO PersonPFCLevel VALUES (2, 3, 9.8);
-INSERT INTO PersonPFCLevel VALUES (2, 4, .1);
-INSERT INTO PersonPFCLevel VALUES (2, 5, .1);
-INSERT INTO PersonPFCLevel VALUES (2, 6, 2);
-INSERT INTO PersonPFCLevel VALUES (2, 7, .2);
-INSERT INTO PersonPFCLevel VALUES (2, 8, .6);
-INSERT INTO PersonPFCLevel VALUES (2, 9, .1);
+/* Participant PFC level table */
+INSERT INTO ParticipantPFCLevel VALUES (1, 1, 2.6);
+INSERT INTO ParticipantPFCLevel VALUES (1, 2, 12.7);
+INSERT INTO ParticipantPFCLevel VALUES (1, 3, 6.5);
+INSERT INTO ParticipantPFCLevel VALUES (1, 4, 0);
+INSERT INTO ParticipantPFCLevel VALUES (1, 5, 0);
+INSERT INTO ParticipantPFCLevel VALUES (1, 6, .9);
+INSERT INTO ParticipantPFCLevel VALUES (1, 7, .2);
+INSERT INTO ParticipantPFCLevel VALUES (1, 8, .2);
+INSERT INTO ParticipantPFCLevel VALUES (1, 9, 0);
+INSERT INTO ParticipantPFCLevel VALUES (2, 1, 7.2);
+INSERT INTO ParticipantPFCLevel VALUES (2, 2, 10.5);
+INSERT INTO ParticipantPFCLevel VALUES (2, 3, 9.8);
+INSERT INTO ParticipantPFCLevel VALUES (2, 4, .1);
+INSERT INTO ParticipantPFCLevel VALUES (2, 5, .1);
+INSERT INTO ParticipantPFCLevel VALUES (2, 6, 2);
+INSERT INTO ParticipantPFCLevel VALUES (2, 7, .2);
+INSERT INTO ParticipantPFCLevel VALUES (2, 8, .6);
+INSERT INTO ParticipantPFCLevel VALUES (2, 9, .1);
 
 /* study level table */
 INSERT INTO StudyPFCLevel (studyID, chemID, pfcMin, pfcMax, pfcMean, pfcGeoMean, pfcMedian, startAge, endAge) VALUES (1, 1, 40, 12700, 1780, 1130, null, null, 'Y');
@@ -1289,9 +1289,9 @@ SELECT * FROM ExposureType;
 SELECT * FROM Study;
 SELECT * FROM WellType;
 SELECT * FROM Well;
-SELECT * FROM Person;
+SELECT * FROM Participant;
 SELECT * FROM Address;
 SELECT * FROM StudyPFCLevel LIMIT 10;
-SELECT * FROM PersonPFCLevel LIMIT 10;
+SELECT * FROM ParticipantPFCLevel LIMIT 10;
 SELECT * FROM SampleNote;
 SELECT * FROM WellSample LIMIT 10;
