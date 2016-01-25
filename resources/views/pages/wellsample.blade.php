@@ -10,23 +10,19 @@
     <h3>Well Testing Samples</h3>
 
     <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="wells" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <strong>Well: </strong>
+      <button class="btn btn-default dropdown-toggle" type="button" id="wells-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         Wells
         <span class="caret"></span>
       </button>
-      <ul class="dropdown-menu" aria-labelledby="wells">
-        <li><a href="haven">Haven</a></li>
+      <ul id="well-select" class="dropdown-menu" aria-labelledby="wells-button">
+        <li><a href="haven" class="active">Haven</a></li>
         <li><a href="smith">Smith</a></li>
         <li><a href="harrison">Harrison</a></li>
         <li><a href="wwtp">WWTP</a></li>
         <li><a href="des">DES</a></li>
       </ul>
     </div>
-
-    <script>
-      var pathname = window.location.pathname;
-      alert(pathname);
-    </script>
 
     <p>&nbsp;</p>
 
@@ -75,13 +71,24 @@
     @include('partials.datatablesJS')
 
     <script>
-    $(document).ready(function() {
-        $('#table').DataTable( {
-            "order": [[ 0, 'desc' ], [1, 'asc']],
-            "pageLength": 20,
-            "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]
+
+        // Parse the pull down
+        var pathname = window.location.pathname;
+        var parts = pathname.split("/");
+        var lastRoute = parts[parts.length - 1];
+        var selected = $("#well-select li a[href|="+lastRoute+"]").text();
+
+        $(document).ready(function() {
+            $('#table').DataTable( {
+                "order": [[ 0, 'desc' ], [1, 'asc']],
+                "pageLength": 20,
+                "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]
+            } );
+
+
+
+            $('#wells-button').text(selected).append(' <span class="caret"></span>');
         } );
-    } );
 
     </script>
 
