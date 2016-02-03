@@ -1,4 +1,8 @@
 <?php namespace App\Http\Controllers;
+
+use App\Participant;
+use DB;
+
 class ParticipantController extends Controller {
     /*
     |--------------------------------------------------------------------------
@@ -16,6 +20,7 @@ class ParticipantController extends Controller {
      */
     public function index()
     {
-        return view('pages.participant');
+        $participants = Participant::crosstab()->get();
+        return view('pages.participant', compact('participants'));
     }
 }

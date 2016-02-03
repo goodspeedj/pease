@@ -22,17 +22,17 @@
         <th>PFBA</th>
       </thead>
       <tbody>
-        @foreach ($wellSamples as $wellSample)
+        @foreach ($participants as $participant)
           <tr>
-            <td>{{ $wellSample->nhHHSID }}</td>
-            <td>{{ $wellSample->PFOA }} <sub>{{ $wellSample->PFOANote }}</sub></td>
-            <td>{{ $wellSample->PFOS }} <sub>{{ $wellSample->PFOSNote }}</sub></td>
-            <td>{{ $wellSample->PFHxS }} <sub>{{ $wellSample->PFHxSNote }}</sub></td>
-            <td>{{ $wellSample->PFOSA }} <sub>{{ $wellSample->PFOSANote }}</sub></td>
-            <td>{{ $wellSample->PFNA }} <sub>{{ $wellSample->PFNANote }}</sub></td>
-            <td>{{ $wellSample->PFPeA }} <sub>{{ $wellSample->PFPeANote }}</sub></td>
-            <td>{{ $wellSample->PFHxA }} <sub>{{ $wellSample->PFHxANote }}</sub></td>
-            <td>{{ $wellSample->PFBA }} <sub>{{ $wellSample->PFBANote }}</sub></td>
+            <td>{{ $participant->participantRecordID }}</td>
+            <td>{{ $participant->PFOA }}</td>
+            <td>{{ $participant->PFOS }}</td>
+            <td>{{ $participant->PFHxS }}</td>
+            <td>{{ $participant->PFOSA }}</td>
+            <td>{{ $participant->PFNA }}</td>
+            <td>{{ $participant->PFPeA }}</td>
+            <td>{{ $participant->PFHxA }}</td>
+            <td>{{ $participant->PFBA }}</td>
           </tr>
         @endforeach
       </tbody>

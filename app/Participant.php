@@ -23,7 +23,7 @@ class Participant extends Model
     public function scopeCrosstab($query)
     {
         //$wellID = 2;
-        return $query->select('nhHHSID', \DB::raw("
+        return $query->select('participantRecordID', \DB::raw("
                     max(if(chemID=1, pfcLevel, ' ')) as 'PFOA',
                     max(if(chemID=2, pfcLevel, ' ')) as 'PFOS',
                     max(if(chemID=3, pfcLevel, ' ')) as 'PFHxS',
@@ -34,6 +34,6 @@ class Participant extends Model
                     max(if(chemID=10, pfcLevel, ' ')) as 'PFBA'
                 "))
             ->leftJoin('ParticipantPFCLevel', 'ParticipantPFCLevel.participantID', '=', 'Participant.participantID')
-            ->groupBy('nhHHSID');
+            ->groupBy('participantRecordID');
     }
 }
