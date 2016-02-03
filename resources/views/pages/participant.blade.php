@@ -41,4 +41,16 @@
 
 @section('custom_js')
     @include('partials.datatablesJS')
+
+    <script>
+
+        $(document).ready(function() {
+            $('#table').DataTable( {
+                "order": [[ 0, 'desc' ], [1, 'asc']],
+                "pageLength": 20,
+                "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]
+            } );
+        } );
+
+    </script>
 @stop
