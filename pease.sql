@@ -33,7 +33,7 @@ CREATE table Chemical (
 
 /* Refrence table to store the type of exposure a given study looked at */
 CREATE table ExposureType (
-    exposureID        int(11)       UNSIGNED    not null,
+    exposureID        int(11)       UNSIGNED    not null auto_increment,
     exposureType      varchar(45)               not null,
     PRIMARY KEY (exposureID)
 );
@@ -243,11 +243,11 @@ INSERT INTO Military (militaryBranch) VALUES ('Coast Guard');
 INSERT INTO Site (militaryID, siteName, county, city, state) VALUES (1, 'Pease Tradeport', 'Rockingham', 'Portsmouth', 'NH');
 
 /* well table */
-INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Haven', 43.076018, -70.818631, 699, 'N');
-INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Smith', 43.061068, -70.804976, 447, 'Y');
-INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 'Harrison', 43.065879, -70.804495, 331, 'Y');
-INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 'WWTP Distribution',43.083631, -70.795990, null, 'Y');
-INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 'DES Office Distribution', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Haven', 43.076018, -70.818631, 699, 'N');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Smith', 43.061068, -70.804976, 447, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Harrison', 43.065879, -70.804495, 331, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'WWTP Distribution',43.083631, -70.795990, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'DES Office Distribution', 43.074757, -70.802534, null, 'Y');
 
 /* sample note table */
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('J', 'The result is an estimated value');
@@ -255,8 +255,8 @@ INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('B', 'Detected in Blank');
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('D', 'duplicate sample');
 
 /* participant table */
-INSERT INTO Participant (participantRecordID, age, yearsExposed, sex) VALUES ('PT0576', 40, 13, 'M');
-INSERT INTO Participant (participantRecordID, age, yearsExposed, sex) VALUES ('PT0577', 4, 2, 'F');
+INSERT INTO Participant (participantRecordID, participantAge, yearsExposed, sex) VALUES ('PT0576', 40, 13, 'M');
+INSERT INTO Participant (participantRecordID, participantAge, yearsExposed, sex) VALUES ('PT0577', 4, 2, 'F');
 
 /* address table */
 INSERT INTO Address (participantID, address) VALUES (1, '325 Corporate Drive Portsmouth, NH  03801');
