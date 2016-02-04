@@ -57,6 +57,15 @@ Route::get('wellsample/wwtp', 'WellSampleController@wwtp');
 Route::get('wellsample/des', 'WellSampleController@des');
 
 /*
+| Provides the routes for the well sample charts
+*/
+Route::get('wellsample/haven/chart', 'WellSampleController@havenChart');
+Route::get('wellsample/smith/chart', 'WellSampleController@smithChart');
+Route::get('wellsample/harrison/chart', 'WellSampleController@harrisonChart');
+Route::get('wellsample/wwtp/chart', 'WellSampleController@wwtpChart');
+Route::get('wellsample/des/chart', 'WellSampleController@desChart');
+
+/*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------

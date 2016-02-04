@@ -29,13 +29,27 @@ class WellSample extends Model
 
 
     /**
+     * Query to return regular well sample data
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWellSample($query, $wellID)
+    {
+        return $query
+                ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
+                ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
+                ->select('WellSample.sampleDate', 'Chemical.shortName', 'WellSample.pfcLevel')
+                ->where('WellSample.wellID', '=', $wellID);
+    }
+
+
+    /**
      * Query to return well sample data in cross tab format
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeCrosstab($query, $wellID)
     {
-        //$wellID = 2;
         return $query->select('sampleDate', \DB::raw("
                     max(if(chemID=1, pfcLevel, ' ')) as 'PFOA', max(if(chemID=1, noteAbr, ' ')) as 'PFOANote',
                     max(if(chemID=2, pfcLevel, ' ')) as 'PFOS', max(if(chemID=2, noteAbr, ' ')) as 'PFOSNote',
