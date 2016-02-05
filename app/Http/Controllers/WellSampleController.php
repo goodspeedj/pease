@@ -44,8 +44,8 @@ class WellSampleController extends Controller {
     public function havenChart() 
     {
         $wellSamples = WellSample::wellSample(1)->get();
-        return $wellSamples;
-        //return view('pages.wellsamplechart', compact('wellSamples'));
+        //return $wellSamples;
+        return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
 
