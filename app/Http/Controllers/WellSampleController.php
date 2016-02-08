@@ -69,8 +69,7 @@ class WellSampleController extends Controller {
     public function smithChart() 
     {
         $wellSamples = WellSample::wellSample(2)->get();
-        return $wellSamples;
-        //return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
 
@@ -94,8 +93,7 @@ class WellSampleController extends Controller {
     public function harrisonChart() 
     {
         $wellSamples = WellSample::wellSample(3)->get();
-        return $wellSamples;
-        //return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
 
@@ -119,8 +117,7 @@ class WellSampleController extends Controller {
     public function wwtpChart() 
     {
         $wellSamples = WellSample::wellSample(4)->get();
-        return $wellSamples;
-        //return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
 
@@ -144,7 +141,6 @@ class WellSampleController extends Controller {
     public function desChart() 
     {
         $wellSamples = WellSample::wellSample(5)->get();
-        return $wellSamples;
-        //return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart', compact('wellSamples'));
     }
 }
