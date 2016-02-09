@@ -18,7 +18,6 @@
 
       .line {
         fill: none;
-        stroke: steelblue;
         stroke-width: 1.5px;
       }
     </style>
@@ -38,8 +37,8 @@
 
       // Set the dimensions of the canvas / graph
       var margin = {top: 30, right: 20, bottom: 70, left: 50},
-          width = 900 - margin.left - margin.right,
-          height = 400 - margin.top - margin.bottom;
+          width = 1000 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom;
 
       // Parse the date / time
       var parseDate = d3.time.format("%Y-%m-%d").parse;
@@ -113,7 +112,7 @@
       // now we bind to nested_data, an array of arrays
       var pfc = svg.selectAll(".pfc")
           .data(nested_data)
-          .enter()
+        .enter()
           .append("g")
           .attr("class", "pfc");
 
@@ -126,6 +125,19 @@
               return line(d.values);
           })
           .style("stroke", function(d) { return color(d.key); });
+
+      var circles = svg.selectAll(".circle")
+          .data(data)
+        .enter()
+          .append("g");
+          
+      circles.append("circle")
+          .attr("stroke", function(d) { return color(d.shortName); })
+          .attr("fill", function(d, i) { return "white" })
+          .attr("cx", function(d, i) { return x(d.sampleDate) })
+          .attr("cy", function(d, i) { return y(d.pfcLevel) })
+          .attr("r", function(d, i) { return 2 });
+
 
     </script>  
 @stop
