@@ -20,6 +20,16 @@
         fill: none;
         stroke-width: 1.5px;
       }
+
+      div.tooltip {
+        position: absolute;
+        height: 50px;
+        padding: 4px;
+        font-size: 11px;
+        background: rgba(192, 192, 192, 0.6);
+        pointer-events: none;
+        border-radius: 5px;
+      }
     </style>
 
     @include('partials.d3JS')
@@ -42,6 +52,7 @@
 
       // Parse the date / time
       var parseDate = d3.time.format("%Y-%m-%d").parse;
+      var hoverDate = d3.time.format("%m-%d-%y");
 
       // clean up data
       data.forEach(function(d){
@@ -76,6 +87,11 @@
           .interpolate("linear")
           .x(function(d) { return x(d.sampleDate); })
           .y(function(d) { return y(d.pfcLevel); });
+
+      // Create the tooltip div
+      var tooltip = d3.select("#chart").append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0);
 
       var svg = d3.select("#chart").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -112,8 +128,7 @@
       // now we bind to nested_data, an array of arrays
       var pfc = svg.selectAll(".pfc")
           .data(nested_data)
-        .enter()
-          .append("g")
+        .enter().append("g")
           .attr("class", "pfc");
 
       pfc.append("path")
@@ -124,19 +139,44 @@
               // our inner array is d.values from the nesting
               return line(d.values);
           })
-          .style("stroke", function(d) { return color(d.key); });
+          .style("stroke", function(d) { return color(d.key); })
+          .on("mouseover", function(d) {
+              // Make the line bold
+              d3.select(this).transition().duration(200)
+                  .style("stroke-width", "4px");
+          })
+          .on("mouseout", function(d) {
+              // Make the line normal again
+              d3.select(this).transition().duration(100)
+                  .style("stroke-width", "1.5px");
+          });
 
       var circles = svg.selectAll(".circle")
           .data(data)
-        .enter()
-          .append("g");
-          
+        .enter().append("g")
+          .attr("class", "circle");
+
       circles.append("circle")
           .attr("stroke", function(d) { return color(d.shortName); })
           .attr("fill", function(d, i) { return "white" })
           .attr("cx", function(d, i) { return x(d.sampleDate) })
           .attr("cy", function(d, i) { return y(d.pfcLevel) })
-          .attr("r", function(d, i) { return 2 });
+          .attr("r", function(d, i) { return 2 })
+          .on("mouseover", function(d) {
+              // Show tooltips
+              tooltip.transition().duration(200)
+                  .style("opacity", 0.8);
+              tooltip
+                  .html("<strong>" + d.shortName + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 25) + "px");
+          })
+          .on("mouseout", function(d) {
+              // Hide the tooltip
+              tooltip.transition().duration(500).style("opacity", 0);
+          });
+
+
 
 
     </script>  
