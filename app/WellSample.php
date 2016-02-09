@@ -39,7 +39,8 @@ class WellSample extends Model
                 ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
                 ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
                 ->select('WellSample.sampleDate', 'Chemical.shortName', 'WellSample.pfcLevel')
-                ->where('WellSample.wellID', '=', $wellID);
+                ->where('WellSample.wellID', '=', $wellID)
+                ->orderBy('WellSample.sampleDate', 'desc');
     }
 
 
