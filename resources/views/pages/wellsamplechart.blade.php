@@ -21,9 +21,19 @@
         stroke-width: 1.5px;
       }
 
-      div.tooltip {
+      div.tooltipDetail {
         position: absolute;
         height: 50px;
+        padding: 4px;
+        font-size: 11px;
+        background: rgba(192, 192, 192, 0.6);
+        pointer-events: none;
+        border-radius: 5px;
+      }
+
+      div.tooltipSummary {
+        position: absolute;
+        height: 20px;
         padding: 4px;
         font-size: 11px;
         background: rgba(192, 192, 192, 0.6);
@@ -89,8 +99,12 @@
           .y(function(d) { return y(d.pfcLevel); });
 
       // Create the tooltip div
-      var tooltip = d3.select("#chart").append("div")
-          .attr("class", "tooltip")
+      var tooltipDetail = d3.select("#chart").append("div")
+          .attr("class", "tooltipDetail")
+          .style("opacity", 0);
+
+      var tooltipSummary = d3.select("#chart").append("div")
+          .attr("class", "tooltipSummary")
           .style("opacity", 0);
 
       var svg = d3.select("#chart").append("svg")
@@ -144,11 +158,52 @@
               // Make the line bold
               d3.select(this).transition().duration(200)
                   .style("stroke-width", "4px");
+
+              d3.selectAll("circle." + d.key).transition().duration(200)
+                  .attr("r", function(d, i) { return 4 })
+
+              // Fade out the other lines
+              var otherlines = $(".line").not("path." + d.key);
+              d3.selectAll(otherlines).transition().duration(200)
+                  .style("opacity", 0.3)
+                  .style("stroke-width", 1.5)
+                  .style("stroke", "gray");
+
+              var othercircles = $("circle").not("circle." + d.key);
+              d3.selectAll(othercircles).transition().duration(200)
+                  .style("opacity", 0.3)
+                  .style("stroke", "gray");
+
+              // Show tooltips
+              tooltipSummary.transition().duration(200)
+                  .style("opacity", 0.8);
+              tooltipSummary
+                  .html(d.key)
+                    .style("left", (d3.event.pageX + 10) + "px")
+                    .style("top", (d3.event.pageY - 25) + "px");
           })
           .on("mouseout", function(d) {
               // Make the line normal again
               d3.select(this).transition().duration(100)
                   .style("stroke-width", "1.5px");
+
+              d3.selectAll("circle." + d.key).transition().duration(100)
+                  .attr("r", function(d, i) { return 2 })
+
+              // Make the other lines normal again
+              var otherlines = $('.line').not("path." + d.key);
+              d3.selectAll(otherlines).transition().duration(100)
+                  .style("opacity", 1)
+                  .style("stroke-width", 1.5)
+                  .style("stroke", function(d) { return color(d.key); });
+
+              var othercircles = $("circle").not("circle." + d.key);
+              d3.selectAll(othercircles).transition().duration(200)
+                  .style("opacity", 1)
+                  .style("stroke", function(d) { return color(d.shortName); });
+
+              // Hide the tooltip
+              tooltipSummary.transition().duration(500).style("opacity", 0);
           });
 
       var circles = svg.selectAll(".circle")
@@ -162,18 +217,26 @@
           .attr("cx", function(d, i) { return x(d.sampleDate) })
           .attr("cy", function(d, i) { return y(d.pfcLevel) })
           .attr("r", function(d, i) { return 2 })
+          .attr("class", function(d) { return d.shortName; })
           .on("mouseover", function(d) {
+
+              d3.select(this).transition().duration(200)
+                  .attr("r", function(d, i) { return 4 })
+
               // Show tooltips
-              tooltip.transition().duration(200)
+              tooltipDetail.transition().duration(200)
                   .style("opacity", 0.8);
-              tooltip
+              tooltipDetail
                   .html("<strong>" + d.shortName + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
                     .style("left", (d3.event.pageX + 10) + "px")
                     .style("top", (d3.event.pageY - 25) + "px");
           })
           .on("mouseout", function(d) {
+              d3.select(this).transition().duration(100)
+                  .attr("r", function(d, i) { return 2 })
+
               // Hide the tooltip
-              tooltip.transition().duration(500).style("opacity", 0);
+              tooltipDetail.transition().duration(500).style("opacity", 0);
           });
 
 
