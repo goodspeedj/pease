@@ -33,11 +33,8 @@
 
     <script>
 
+      //Raw data
       var data = <?php echo $wellSamples ?>;
-
-      console.log(data);
-
-      var uniqDates = d3.map(data, function(d) { return d.sampleDate; }).size();
 
       // Set the dimensions of the canvas / graph
       var margin = {top: 30, right: 20, bottom: 70, left: 50},
@@ -47,9 +44,25 @@
       // Parse the date / time
       var parseDate = d3.time.format("%Y-%m-%d").parse;
 
+      // clean up data
+      data.forEach(function(d){
+        d.sampleDate = parseDate(d.sampleDate);
+        d.pfcLevel = +d.pfcLevel;
+      });
+
+      // nest data
+      var nested_data = d3.nest()
+        .key(function(d) { return d.shortName; })
+        .entries(data);
+
       // Set the ranges
       var x = d3.time.scale().range([0, width]);
       var y = d3.scale.linear().range([height, 0]);
+      var color = d3.scale.category20();
+
+      color.domain(data.map(function(d) {
+          return d.shortName;
+      }));
 
       var xAxis = d3.svg.axis()
           .scale(x)
@@ -61,9 +74,9 @@
           .orient("left");
 
       var line = d3.svg.line()
-          .interpolate("basis")
-          .x(function(d) { console.log(d.sampleDate); return x(d.sampleDate); })
-          .y(function(d) { console.log(d.pfcLevel); return y(d.pfcLevel); });
+          .interpolate("linear")
+          .x(function(d) { return x(d.sampleDate); })
+          .y(function(d) { return y(d.pfcLevel); });
 
       var svg = d3.select("#chart").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -71,7 +84,7 @@
           .append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      x.domain(d3.extent(data, function(d) { return parseDate(d.sampleDate); }));
+      x.domain(d3.extent(data, function(d) { return d.sampleDate; }));
       y.domain(d3.extent(data, function(d) { return d.pfcLevel; }));
 
       svg.append("g")
@@ -97,15 +110,22 @@
           .text("PFC Level");
 
       
+      // now we bind to nested_data, an array of arrays
       var pfc = svg.selectAll(".pfc")
-          .data(data)
-        .enter().append("g")
+          .data(nested_data)
+          .enter()
+          .append("g")
           .attr("class", "pfc");
 
       pfc.append("path")
-          .attr("class", "line")
-          .attr("d", line)
-          .style("stroke", "green");
+          .attr("class", function(d) {
+              return "line " + d.key;
+          })
+          .attr("d", function(d){
+              // our inner array is d.values from the nesting
+              return line(d.values);
+          })
+          .style("stroke", function(d) { return color(d.key); });
 
     </script>  
 @stop
