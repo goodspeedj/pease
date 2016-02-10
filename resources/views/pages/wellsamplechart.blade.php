@@ -261,6 +261,10 @@
             .attr("stroke", function(d) { return color(d.key);})
             .attr("fill", function(d) { return color(d.key); })
             .on("click", function(d) {
+
+                var selectedPath = svg.select("path." + d.key);
+                var totalLength = selectedPath.node().getTotalLength();
+
                 // change the visibility
                 if (d.visibility === 1) {
                     d.visibility = 0;
@@ -276,6 +280,29 @@
                             return "white";
                         }
                     })
+
+                svg.select("path." + d.key).transition().duration(5000)
+                    .delay(150)
+                    .style("display", function(d) {
+                        if(d.visibility === 0) {
+                            return "inline";
+                        }
+                        else return "none";
+                    })
+                    .attr("d", function(d) {
+                        return line(d.values);
+                    });
+
+                svg.selectAll("circle." + d.key).transition().duration(500)
+                    //.delay(function(d, i) { return i * 10; })
+                    .style("display", function(a) {
+                        if(d.visibility === 0) {
+                            return "inline";
+                        }
+                        else return "none";
+                    });
+
+
             });
 
       legend.append("text")
