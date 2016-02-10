@@ -57,13 +57,25 @@ Route::get('wellsample/wwtp', 'WellSampleController@wwtp');
 Route::get('wellsample/des', 'WellSampleController@des');
 
 /*
-| Provides the routes for the well sample charts
+| Provides the routes for the well sample charts by well
 */
 Route::get('wellsample/haven/chart', 'WellSampleController@havenChart');
 Route::get('wellsample/smith/chart', 'WellSampleController@smithChart');
 Route::get('wellsample/harrison/chart', 'WellSampleController@harrisonChart');
 Route::get('wellsample/wwtp/chart', 'WellSampleController@wwtpChart');
 Route::get('wellsample/des/chart', 'WellSampleController@desChart');
+
+/*
+| Provides the routes for the well sample charts by pfc
+*/
+Route::get('wellsample/PFOA/chart', 'WellSampleController@pfoaChart');
+Route::get('wellsample/PFOS/chart', 'WellSampleController@pfosChart');
+Route::get('wellsample/PFHxS/chart', 'WellSampleController@pfhxsChart');
+Route::get('wellsample/PFOSA/chart', 'WellSampleController@pfosaChart');
+Route::get('wellsample/PFNA/chart', 'WellSampleController@pfnaChart');
+Route::get('wellsample/PFPeA/chart', 'WellSampleController@pfpeaChart');
+Route::get('wellsample/PFHxA/chart', 'WellSampleController@pfhxaChart');
+Route::get('wellsample/PFBA/chart', 'WellSampleController@pfbaChart');
 
 /*
 |--------------------------------------------------------------------------

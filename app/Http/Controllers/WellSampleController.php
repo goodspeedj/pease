@@ -43,8 +43,7 @@ class WellSampleController extends Controller {
      */
     public function havenChart() 
     {
-        $wellSamples = WellSample::wellSample(1)->get();
-        //return $wellSamples;
+        $wellSamples = WellSample::wellSampleByWell(1)->get();
         return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
@@ -68,7 +67,7 @@ class WellSampleController extends Controller {
      */
     public function smithChart() 
     {
-        $wellSamples = WellSample::wellSample(2)->get();
+        $wellSamples = WellSample::wellSampleByWell(2)->get();
         return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
@@ -92,7 +91,7 @@ class WellSampleController extends Controller {
      */
     public function harrisonChart() 
     {
-        $wellSamples = WellSample::wellSample(3)->get();
+        $wellSamples = WellSample::wellSampleByWell(3)->get();
         return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
@@ -116,7 +115,7 @@ class WellSampleController extends Controller {
      */
     public function wwtpChart() 
     {
-        $wellSamples = WellSample::wellSample(4)->get();
+        $wellSamples = WellSample::wellSampleByWell(4)->get();
         return view('pages.wellsamplechart', compact('wellSamples'));
     }
 
@@ -140,7 +139,33 @@ class WellSampleController extends Controller {
      */
     public function desChart() 
     {
-        $wellSamples = WellSample::wellSample(5)->get();
+        $wellSamples = WellSample::wellSampleByWell(5)->get();
         return view('pages.wellsamplechart', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFOA in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfoaChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(1)->get();
+        //return $wellSamples;
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFOS in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfosChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(2)->get();
+        //return $wellSamples;
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
     }
 }

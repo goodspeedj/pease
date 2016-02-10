@@ -29,11 +29,11 @@ class WellSample extends Model
 
 
     /**
-     * Query to return regular well sample data
+     * Query to return regular well sample data by well 
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWellSample($query, $wellID)
+    public function scopeWellSampleByWell($query, $wellID)
     {
         return $query
                 ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
@@ -41,7 +41,24 @@ class WellSample extends Model
                 ->select('WellSample.sampleDate', 'Chemical.shortName', 'WellSample.pfcLevel')
                 ->where('WellSample.wellID', '=', $wellID)
                 ->orderBy('WellSample.sampleDate', 'desc')
-                ->orderBy('Chemical.chemID', 'asc');
+                ->orderBy('Chemical.chemID', 'desc');
+    }
+
+
+    /**
+     * Query to return regular well sample data by well 
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWellSampleByPfc($query, $chemID)
+    {
+        return $query
+                ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
+                ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
+                ->select('WellSample.sampleDate', 'Chemical.shortName', 'WellSample.pfcLevel', 'Well.wellName')
+                ->where('Chemical.chemID', '=', $chemID)
+                ->orderBy('WellSample.sampleDate', 'desc')
+                ->orderBy('Well.wellID', 'asc');
     }
 
 
