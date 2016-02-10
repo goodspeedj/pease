@@ -56,7 +56,7 @@
       var data = <?php echo $wellSamples ?>;
 
       // Set the dimensions of the canvas / graph
-      var margin = {top: 30, right: 20, bottom: 70, left: 50},
+      var margin = {top: 30, right: 100, bottom: 70, left: 50},
           width = 1000 - margin.left - margin.right,
           height = 500 - margin.top - margin.bottom;
 
@@ -139,13 +139,14 @@
           .text("PFC Level");
 
       
-      // now we bind to nested_data, an array of arrays
-      var pfc = svg.selectAll(".pfc")
+      // bind data to the lines
+      var lines = svg.selectAll(".lines")
           .data(nested_data)
         .enter().append("g")
-          .attr("class", "pfc");
+          .attr("class", "lines");
 
-      pfc.append("path")
+      // Add the paths for the lines
+      lines.append("path")
           .attr("class", function(d) {
               return "line " + d.key;
           })
@@ -206,11 +207,13 @@
               tooltipSummary.transition().duration(500).style("opacity", 0);
           });
 
+      // bind the data for the circles
       var circles = svg.selectAll(".circle")
           .data(data)
         .enter().append("g")
           .attr("class", "circle");
 
+      // Add the circles to the lines
       circles.append("circle")
           .attr("stroke", function(d) { return color(d.shortName); })
           .attr("fill", function(d, i) { return "white" })
@@ -239,7 +242,29 @@
               tooltipDetail.transition().duration(500).style("opacity", 0);
           });
 
+      // bind the data for the legend
+      var legend = svg.selectAll(".legend")
+            .data(nested_data)
+          .enter().append("g")
+            .attr("class", "legend");
 
+      // Add the colored legend boxes
+      legend.append("rect")
+            .attr("height",10)
+            .attr("width", 25)
+            .attr("class", function(d) { return d.key; })
+            .attr("x", width + 30)
+            .attr("y", function(d,i) { return height - 350 + (i*30); })
+            .attr("stroke", function(d) { return color(d.key);})
+            .attr("fill", function(d) { return color(d.key); });
+
+      legend.append("text")
+            .attr("class", "legendLabel")
+            .attr("x", function(d) { return width + 65; })
+            .attr("y", function(d,i) { return height - 342 + (i*30); })
+            .text( function(d) { return d.key; })
+            .attr("font-size", "11px")
+            .attr("fill", "black");
 
 
     </script>  
