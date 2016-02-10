@@ -68,12 +68,15 @@
       data.forEach(function(d){
         d.sampleDate = parseDate(d.sampleDate);
         d.pfcLevel = +d.pfcLevel;
+        d.visible = 1;
       });
 
       // nest data
       var nested_data = d3.nest()
         .key(function(d) { return d.shortName; })
         .entries(data);
+
+      console.log(nested_data);
 
       // Set the ranges
       var x = d3.time.scale().range([0, width]);
@@ -256,7 +259,24 @@
             .attr("x", width + 30)
             .attr("y", function(d,i) { return height - 350 + (i*30); })
             .attr("stroke", function(d) { return color(d.key);})
-            .attr("fill", function(d) { return color(d.key); });
+            .attr("fill", function(d) { return color(d.key); })
+            .on("click", function(d) {
+                // change the visibility
+                if (d.visibility === 1) {
+                    d.visibility = 0;
+                } else {
+                    d.visibility = 1;
+                }
+
+                svg.select("rect." + d.key).transition().duration(500)
+                    .attr("fill", function(d) {
+                        if (d.visibility === 0) {
+                            return color(d.key);
+                        } else {
+                            return "white";
+                        }
+                    })
+            });
 
       legend.append("text")
             .attr("class", "legendLabel")
