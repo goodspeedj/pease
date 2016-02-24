@@ -44,7 +44,7 @@ class WellSampleController extends Controller {
     public function havenChart() 
     {
         $wellSamples = WellSample::wellSampleByWell(1)->get();
-        return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -68,7 +68,7 @@ class WellSampleController extends Controller {
     public function smithChart() 
     {
         $wellSamples = WellSample::wellSampleByWell(2)->get();
-        return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -92,7 +92,7 @@ class WellSampleController extends Controller {
     public function harrisonChart() 
     {
         $wellSamples = WellSample::wellSampleByWell(3)->get();
-        return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -116,7 +116,7 @@ class WellSampleController extends Controller {
     public function wwtpChart() 
     {
         $wellSamples = WellSample::wellSampleByWell(4)->get();
-        return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -140,7 +140,7 @@ class WellSampleController extends Controller {
     public function desChart() 
     {
         $wellSamples = WellSample::wellSampleByWell(5)->get();
-        return view('pages.wellsamplechart', compact('wellSamples'));
+        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -152,7 +152,6 @@ class WellSampleController extends Controller {
     public function pfoaChart() 
     {
         $wellSamples = WellSample::wellSampleByPfc(1)->get();
-        //return $wellSamples;
         return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
     }
 
@@ -165,7 +164,78 @@ class WellSampleController extends Controller {
     public function pfosChart() 
     {
         $wellSamples = WellSample::wellSampleByPfc(2)->get();
-        //return $wellSamples;
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFHxS in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfhxsChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(3)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFOSA in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfosaChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(5)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFNA in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfnaChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(6)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFPeA in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfpeaChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(8)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFHxA in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfhxaChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(9)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFBA in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfbaChart() 
+    {
+        $wellSamples = WellSample::wellSampleByPfc(10)->get();
         return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
     }
 }
