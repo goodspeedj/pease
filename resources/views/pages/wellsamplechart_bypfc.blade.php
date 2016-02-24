@@ -58,12 +58,9 @@
       @include('partials.multiline')
 
       var chart = multilineChart()
-            .dimKey(function(d) { console.log(d); return d.wellName; });
+            .dimKey(function(d) { return d.wellName; });
 
       d3.select("#chart").datum(data).call(chart);
-
-      
-
 
     </script>  
 @stop
