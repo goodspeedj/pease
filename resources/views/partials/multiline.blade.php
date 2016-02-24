@@ -216,18 +216,24 @@ function multilineChart() {
                 .on("click", function(d) {
 
                     var selectedPath = svg.select("path." + d.key);
-                    var totalLength = selectedPath.node().getTotalLength();
+                    //var totalLength = selectedPath.node().getTotalLength();
 
                     // change the visibility
-                    if (d.visibility === 1) {
-                        d.visibility = 0;
+                    //
+                    // ***** THIS SHOULD BE d.visible NOT d.visibility
+                    //
+
+                    if (d.visible === 1) {
+                        d.visible = 0;
                     } else {
-                        d.visibility = 1;
+                        d.visible = 1;
                     }
+
+                    rescaleY();
 
                     svg.select("rect." + d.key).transition().duration(500)
                         .attr("fill", function(d) {
-                            if (d.visibility === 0) {
+                            if (d.visible === 0) {
                                 return color(d.key);
                             } else {
                                 return "white";
@@ -237,7 +243,7 @@ function multilineChart() {
                     svg.select("path." + d.key).transition().duration(5000)
                         .delay(150)
                         .style("display", function(d) {
-                            if(d.visibility === 0) {
+                            if(d.visible === 0) {
                                 return "inline";
                             }
                             else return "none";
@@ -249,7 +255,7 @@ function multilineChart() {
                     svg.selectAll("circle." + d.key).transition().duration(500)
                         //.delay(function(d, i) { return i * 10; })
                         .style("display", function(a) {
-                            if(d.visibility === 0) {
+                            if(d.visible === 0) {
                                 return "inline";
                             }
                             else return "none";
@@ -265,6 +271,34 @@ function multilineChart() {
                 .text( function(d) { return d.key; })
                 .attr("font-size", "11px")
                 .attr("fill", "black");
+
+
+            // Get the maximum Y value
+            function getMaxY() {
+                var maxY = -1;
+                console.log(nested_data);
+                nested_data.forEach(function(d) { 
+                    console.log("visible = " + d);
+                    d.values.forEach(function(d) {
+                        if (d.visible === 1) {
+                            if (d.pfcLevel > maxY){
+                                maxY = d.pfcLevel;
+                            }
+                        }
+                    });
+                });
+                console.log("max = " + maxY);
+                return maxY;
+            }
+
+            function rescaleY() {
+                console.log(getMaxY());
+                y.domain([0, getMaxY()]);
+
+                svg.select(".y").transition()
+                    .duration(1500).ease("sin-in-out")
+                    .call(yAxis);
+            }
 
         });
 
