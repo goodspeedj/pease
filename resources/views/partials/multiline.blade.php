@@ -47,7 +47,7 @@ function multilineChart() {
             data.forEach(function(d) {
                 d.sampleDate = parseDate(d.sampleDate);
                 d.pfcLevel = +d.pfcLevel;
-                d.visible = 1;
+                //d.visible = 1;
             });
 
             // nest data
@@ -55,7 +55,9 @@ function multilineChart() {
                 .key(function(d) { return dimKey(d); })
                 .entries(data);
 
-
+            nested_data.forEach(function(d) {
+                d.visible = 1;
+            });
 
             color.domain(data.map(function(d) {
                 return dimKey(d);
@@ -218,11 +220,6 @@ function multilineChart() {
                     var selectedPath = svg.select("path." + d.key);
                     //var totalLength = selectedPath.node().getTotalLength();
 
-                    // change the visibility
-                    //
-                    // ***** THIS SHOULD BE d.visible NOT d.visibility
-                    //
-
                     if (d.visible === 1) {
                         d.visible = 0;
                     } else {
@@ -230,10 +227,11 @@ function multilineChart() {
                     }
 
                     rescaleY();
+                    updateLines();
 
                     svg.select("rect." + d.key).transition().duration(500)
                         .attr("fill", function(d) {
-                            if (d.visible === 0) {
+                            if (d.visible === 1) {
                                 return color(d.key);
                             } else {
                                 return "white";
@@ -243,7 +241,7 @@ function multilineChart() {
                     svg.select("path." + d.key).transition().duration(5000)
                         .delay(150)
                         .style("display", function(d) {
-                            if(d.visible === 0) {
+                            if(d.visible === 1) {
                                 return "inline";
                             }
                             else return "none";
@@ -255,7 +253,7 @@ function multilineChart() {
                     svg.selectAll("circle." + d.key).transition().duration(500)
                         //.delay(function(d, i) { return i * 10; })
                         .style("display", function(a) {
-                            if(d.visible === 0) {
+                            if(d.visible === 1) {
                                 return "inline";
                             }
                             else return "none";
@@ -276,28 +274,40 @@ function multilineChart() {
             // Get the maximum Y value
             function getMaxY() {
                 var maxY = -1;
-                console.log(nested_data);
                 nested_data.forEach(function(d) { 
-                    console.log("visible = " + d);
-                    d.values.forEach(function(d) {
-                        if (d.visible === 1) {
-                            if (d.pfcLevel > maxY){
+                    if (d.visible === 1) {
+                        d.values.forEach(function(d) {
+                            if (d.pfcLevel > maxY) {
                                 maxY = d.pfcLevel;
                             }
-                        }
-                    });
+                        });
+                    }
                 });
-                console.log("max = " + maxY);
                 return maxY;
             }
 
+            // re-scale the Y axis
             function rescaleY() {
-                console.log(getMaxY());
                 y.domain([0, getMaxY()]);
-
                 svg.select(".y").transition()
-                    .duration(1500).ease("sin-in-out")
+                    .duration(1000).ease("sin-in-out")
                     .call(yAxis);
+            }
+
+             // Helper function for updating the lines after selecting/deselecting on the legend
+            function updateLines() {
+                svg.selectAll(".line")
+                    .transition().duration(500)
+                    //.delay(function(d, i) { console.log("d = " + d + ", i = " + i); return i * 20; })
+                    .style("display", function(d) {
+                        if(d.visible === 1) {
+                            return "inline";
+                        }
+                        else return "none";
+                    })
+                    .attr("d", function(d) {
+                        return line(d.values);
+                    });
             }
 
         });
