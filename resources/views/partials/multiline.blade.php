@@ -167,38 +167,38 @@ function multilineChart() {
 
             // bind the data for the circles
             var circles = svg.selectAll(".circle")
-              .data(data)
-            .enter().append("g")
-              .attr("class", "circle");
+                .data(data)
+              .enter().append("g")
+                .attr("class", "circle");
 
             // Add the circles to the lines
             circles.append("circle")
-              .attr("stroke", function(d) { return color(dimKey(d)); })
-              .attr("fill", function(d, i) { return "white" })
-              .attr("cx", function(d, i) { return x(d.sampleDate) })
-              .attr("cy", function(d, i) { return y(d.pfcLevel) })
-              .attr("r", function(d, i) { return 2 })
-              .attr("class", function(d) { return dimKey(d); })
-              .on("mouseover", function(d) {
+                .attr("stroke", function(d) { return color(dimKey(d)); })
+                .attr("fill", function(d, i) { return "white" })
+                .attr("cx", function(d, i) { return x(d.sampleDate) })
+                .attr("cy", function(d, i) { return y(d.pfcLevel) })
+                .attr("r", function(d, i) { return 2 })
+                .attr("class", function(d) { return dimKey(d); })
+                .on("mouseover", function(d) {
 
-                  d3.select(this).transition().duration(200)
-                      .attr("r", function(d, i) { return 4 })
+                    d3.select(this).transition().duration(200)
+                        .attr("r", function(d, i) { return 4 })
 
-                  // Show tooltips
-                  tooltipDetail.transition().duration(200)
-                      .style("opacity", 0.8);
-                  tooltipDetail
-                      .html("<strong>" + dimKey(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
+                    // Show tooltips
+                    tooltipDetail.transition().duration(200)
+                        .style("opacity", 0.8);
+                    tooltipDetail
+                        .html("<strong>" + dimKey(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
                         .style("left", (d3.event.pageX + 10) + "px")
                         .style("top", (d3.event.pageY - 25) + "px");
-              })
-              .on("mouseout", function(d) {
-                  d3.select(this).transition().duration(100)
-                      .attr("r", function(d, i) { return 2 })
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).transition().duration(100)
+                        .attr("r", function(d, i) { return 2 })
 
-                  // Hide the tooltip
-                  tooltipDetail.transition().duration(500).style("opacity", 0);
-              });
+                    // Hide the tooltip
+                    tooltipDetail.transition().duration(500).style("opacity", 0);
+                });
 
             // bind the data for the legend
             var legend = svg.selectAll(".legend")
@@ -228,6 +228,7 @@ function multilineChart() {
 
                     rescaleY();
                     updateLines();
+                    updateCircles();
 
                     svg.select("rect." + d.key).transition().duration(500)
                         .attr("fill", function(d) {
@@ -238,7 +239,7 @@ function multilineChart() {
                             }
                         })
 
-                    svg.select("path." + d.key).transition().duration(5000)
+                    svg.select("path." + d.key).transition().duration(500)
                         .delay(150)
                         .style("display", function(d) {
                             if(d.visible === 1) {
@@ -298,16 +299,17 @@ function multilineChart() {
             function updateLines() {
                 svg.selectAll(".line")
                     .transition().duration(500)
-                    //.delay(function(d, i) { console.log("d = " + d + ", i = " + i); return i * 20; })
-                    .style("display", function(d) {
-                        if(d.visible === 1) {
-                            return "inline";
-                        }
-                        else return "none";
-                    })
+                    .delay(function(d, i) { return i * 20; })
                     .attr("d", function(d) {
                         return line(d.values);
                     });
+            }
+
+            function updateCircles() {
+                svg.selectAll(".circle circle")
+                    .transition().duration(500)
+                    .delay(function(d, i) { return i; })
+                    .attr("cy", function(d, i) { return y(d.pfcLevel) });
             }
 
         });

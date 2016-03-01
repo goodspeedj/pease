@@ -3,7 +3,6 @@
 @section('title', 'Well Sample')
 
 @section('custom_css')
-    @include('partials.datatablesCSS')
     <style>
       .axis path,
       .axis line {
