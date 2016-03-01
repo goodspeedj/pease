@@ -59,6 +59,8 @@ function multilineChart() {
                 d.visible = 1;
             });
 
+            console.log(nested_data);
+
             color.domain(data.map(function(d) {
                 return dimKey(d);
             }));
