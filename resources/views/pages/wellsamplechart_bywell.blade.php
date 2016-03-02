@@ -55,6 +55,7 @@
       //Raw data
       var data = <?php echo $wellSamples ?>;
 
+      @include('partials.chartCommon')
       @include('partials.multiline')
 
       var chart = multilineChart()
