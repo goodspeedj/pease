@@ -217,6 +217,16 @@ function multilineChart() {
                 .attr("y", function(d,i) { return height - 350 + (i*30); })
                 .attr("stroke", function(d) { return color(d.key);})
                 .attr("fill", function(d) { return color(d.key); })
+                .on("mouseover", function(d) {
+                    d3.select(this).transition().duration(100)
+                        .attr("height", 12)
+                        .attr("width", 27)
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).transition().duration(100)
+                        .attr("height", 10)
+                        .attr("width", 25)
+                })
                 .on("click", function(d) {
 
                     var selectedPath = svg.select("path." + d.key);
