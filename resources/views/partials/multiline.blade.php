@@ -181,11 +181,47 @@ function multilineChart() {
                     d3.select(this)
                         .attr("height", 12)
                         .attr("width", 27)
+
+                    d3.select("path." + d.key).transition().duration(200)
+                        .style("stroke-width", "4px");
+
+                    d3.selectAll("circle." + d.key).transition().duration(200)
+                        .attr("r", function(d, i) { return 4 })
+
+                    // Fade out the other lines
+                    var otherlines = $(".line").not("path." + d.key);
+                    d3.selectAll(otherlines).transition().duration(200)
+                        .style("opacity", 0.3)
+                        .style("stroke-width", 1.5)
+                        .style("stroke", "gray");
+
+                    var othercircles = $("circle").not("circle." + d.key);
+                    d3.selectAll(othercircles).transition().duration(200)
+                       .style("opacity", 0.3)
+                       .style("stroke", "gray");
                 })
                 .on("mouseout", function(d) {
                     d3.select(this)
                         .attr("height", 10)
                         .attr("width", 25)
+
+                    d3.select("path." + d.key).transition().duration(200)
+                        .style("stroke-width", "1.5px");
+
+                    d3.selectAll("circle." + d.key).transition().duration(200)
+                        .attr("r", function(d, i) { return 2 })
+
+                    // Make the other lines normal again
+                    var otherlines = $('.line').not("path." + d.key);
+                    d3.selectAll(otherlines).transition().duration(100)
+                        .style("opacity", 1)
+                        .style("stroke-width", 1.5)
+                        .style("stroke", function(d) { return color(d.key); });
+
+                    var othercircles = $("circle").not("circle." + d.key);
+                    d3.selectAll(othercircles).transition().duration(200)
+                        .style("opacity", 1)
+                        .style("stroke", function(d) { return color(dimKey(d)); });
                 })
                 .on("click", function(d) {
 
