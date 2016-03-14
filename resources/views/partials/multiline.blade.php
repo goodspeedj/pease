@@ -77,26 +77,26 @@ function multilineChart() {
               .style("stroke", function(d) { return color(d.key); })
               .on("mouseover", function(d) {
                   // Make the line bold
-                  d3.select(this).transition().duration(200)
+                  d3.select(this).transition().duration(transitionTimeDuration)
                       .style("stroke-width", "4px");
 
-                  d3.selectAll("circle." + d.key).transition().duration(200)
+                  d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
                       .attr("r", function(d, i) { return 4 })
 
                   // Fade out the other lines
                   var otherlines = $(".line").not("path." + d.key);
-                  d3.selectAll(otherlines).transition().duration(200)
+                  d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
                       .style("opacity", 0.3)
                       .style("stroke-width", 1.5)
                       .style("stroke", "gray");
 
                   var othercircles = $("circle").not("circle." + d.key);
-                  d3.selectAll(othercircles).transition().duration(200)
+                  d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
                       .style("opacity", 0.3)
                       .style("stroke", "gray");
 
                   // Show tooltips
-                  tooltipSummary.transition().duration(200)
+                  tooltipSummary.transition().duration(transitionTimeDuration)
                       .style("opacity", 0.8);
                   tooltipSummary
                       .html(d.key)
@@ -119,7 +119,7 @@ function multilineChart() {
                       .style("stroke", function(d) { return color(d.key); });
 
                   var othercircles = $("circle").not("circle." + d.key);
-                  d3.selectAll(othercircles).transition().duration(200)
+                  d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
                       .style("opacity", 1)
                       .style("stroke", function(d) { return color(dimKey(d)); });
 
@@ -143,11 +143,11 @@ function multilineChart() {
                 .attr("class", function(d) { return dimKey(d); })
                 .on("mouseover", function(d) {
 
-                    d3.select(this).transition().duration(200)
+                    d3.select(this).transition().duration(transitionTimeDuration)
                         .attr("r", function(d, i) { return 4 })
 
                     // Show tooltips
-                    tooltipDetail.transition().duration(200)
+                    tooltipDetail.transition().duration(transitionTimeDuration)
                         .style("opacity", 0.8);
                     tooltipDetail
                         .html("<strong>" + dimKey(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
@@ -182,21 +182,21 @@ function multilineChart() {
                         .attr("height", 12)
                         .attr("width", 27)
 
-                    d3.select("path." + d.key).transition().duration(200)
+                    d3.select("path." + d.key).transition().duration(transitionTimeDuration)
                         .style("stroke-width", "4px");
 
-                    d3.selectAll("circle." + d.key).transition().duration(200)
+                    d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
                         .attr("r", function(d, i) { return 4 })
 
                     // Fade out the other lines
                     var otherlines = $(".line").not("path." + d.key);
-                    d3.selectAll(otherlines).transition().duration(200)
+                    d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
                         .style("opacity", 0.3)
                         .style("stroke-width", 1.5)
                         .style("stroke", "gray");
 
                     var othercircles = $("circle").not("circle." + d.key);
-                    d3.selectAll(othercircles).transition().duration(200)
+                    d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
                        .style("opacity", 0.3)
                        .style("stroke", "gray");
                 })
@@ -205,21 +205,21 @@ function multilineChart() {
                         .attr("height", 10)
                         .attr("width", 25)
 
-                    d3.select("path." + d.key).transition().duration(200)
+                    d3.select("path." + d.key).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
                         .style("stroke-width", "1.5px");
 
-                    d3.selectAll("circle." + d.key).transition().duration(200)
+                    d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
                         .attr("r", function(d, i) { return 2 })
 
                     // Make the other lines normal again
                     var otherlines = $('.line').not("path." + d.key);
-                    d3.selectAll(otherlines).transition().duration(100)
+                    d3.selectAll(otherlines).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
                         .style("opacity", 1)
                         .style("stroke-width", 1.5)
                         .style("stroke", function(d) { return color(d.key); });
 
                     var othercircles = $("circle").not("circle." + d.key);
-                    d3.selectAll(othercircles).transition().duration(200)
+                    d3.selectAll(othercircles).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
                         .style("opacity", 1)
                         .style("stroke", function(d) { return color(dimKey(d)); });
                 })
@@ -238,7 +238,7 @@ function multilineChart() {
                     updateLines();
                     updateCircles();
 
-                    svg.select("rect." + d.key).transition().duration(500)
+                    svg.select("rect." + d.key).transition().duration(transitionTimeDuration)
                         .attr("fill", function(d) {
                             if (d.visible === 1) {
                                 return color(d.key);
@@ -246,29 +246,14 @@ function multilineChart() {
                                 return "white";
                             }
                         })
-
-                    svg.select("path." + d.key).transition().duration(500)
-                        .delay(150)
-                        .style("display", function(d) {
-                            if(d.visible === 1) {
-                                return "inline";
-                            }
-                            else return "none";
-                        })
-                        .attr("d", function(d) {
-                            return line(d.values);
-                        });
-
-                    svg.selectAll("circle." + d.key).transition().duration(500)
-                        //.delay(function(d, i) { return i * 10; })
+                    
+                    svg.selectAll("circle." + d.key).transition().duration(transitionTimeDuration * 2)
                         .style("display", function(a) {
                             if(d.visible === 1) {
                                 return "inline";
                             }
                             else return "none";
                         });
-
-
                 });
 
             legend.append("text")
@@ -306,8 +291,14 @@ function multilineChart() {
              // Helper function for updating the lines after selecting/deselecting on the legend
             function updateLines() {
                 svg.selectAll(".line")
-                    .transition().duration(500)
+                    .transition().duration(transitionTimeDuration * 2)
                     .delay(function(d, i) { return i * 20; })
+                    .style("display", function(d) {
+                        if(d.visible === 1) {
+                            return "inline";
+                        }
+                        else return "none";
+                    })
                     .attr("d", function(d) {
                         return line(d.values);
                     });
@@ -316,8 +307,8 @@ function multilineChart() {
             // update the circles on a Y axis update
             function updateCircles() {
                 svg.selectAll(".circle circle")
-                    .transition().duration(500)
-                    .delay(function(d, i) { return i; })
+                    .transition().duration(transitionTimeDuration * 2)
+                    .delay(function(d, i) { return i/2; })
                     .attr("cy", function(d, i) { return y(d.pfcLevel) });
             }
 
