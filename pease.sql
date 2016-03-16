@@ -230,8 +230,9 @@ INSERT INTO Study (exposureID, studyName, studyStartDate, studyEndDate, particip
 INSERT INTO Study (exposureID, studyName, studyStartDate, studyEndDate, participants) VALUES (3, 'Schecter', '2009-01-01', '2009-12-31', 300);
 
 /* Well Type table */
-INSERT INTO WellType (wellType) VALUES ('Well');
+INSERT INTO WellType (wellType) VALUES ('Production Well');
 INSERT INTO WellType (wellType) VALUES ('Distribution Point');
+INSERT INTO WellType (wellType) VALUES ('Sentry Well');
 
 /* Military Branch table */
 INSERT INTO Military (militaryBranch) VALUES ('Air Force');
@@ -246,8 +247,28 @@ INSERT INTO Site (militaryID, siteName, county, city, state) VALUES (1, 'Pease T
 INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Haven', 43.076018, -70.818631, 699, 'N');
 INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Smith', 43.061068, -70.804976, 447, 'Y');
 INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Harrison', 43.065879, -70.804495, 331, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Collins', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (1, 1, 'Portsmouth', 43.074757, -70.802534, null, 'Y');
 INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'WWTP Distribution',43.083631, -70.795990, null, 'Y');
 INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'DES Office Distribution', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'GBK_PRE', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'GBK_POST1', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'GBK_POST2', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'DSC_PRE', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'DSC_POST', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (2, 1, 'FIRESTATION', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'CSW-1D', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'CSW-1S', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'CSW-2R', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'HMW-8R', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'HMW-14', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'HMW-15', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'SMW-A', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'SMW-1', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'SMW-13', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'PSW-1', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'CSW-1D', 43.074757, -70.802534, null, 'Y');
+INSERT INTO Well (wellTypeID, siteID, wellName, wellLat, wellLong, wellYeild, wellActive) VALUES (3, 1, 'PSW-2', 43.074757, -70.802534, null, 'Y');
 
 /* sample note table */
 INSERT INTO SampleNote (noteAbr, noteDescr) VALUES ('J', 'The result is an estimated value');
