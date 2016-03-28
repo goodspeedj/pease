@@ -174,59 +174,72 @@ function multilineChart() {
                 .attr("width", 25)
                 .attr("class", function(d) { return d.key; })
                 .attr("x", width + 30)
-                .attr("y", function(d,i) { return height - 350 + (i*30); })
+                .attr("y", function(d,i) { return height - 490 + (i*25); })
                 .attr("stroke", function(d) { return color(d.key);})
                 .attr("fill", function(d) { return color(d.key); })
                 .on("mouseover", function(d) {
-                    d3.select(this)
-                        .attr("height", 12)
-                        .attr("width", 27)
+                    //if($('.legend').hasClass('clicked')) transitionTimeDelay = 100;
 
-                    d3.select("path." + d.key).transition().duration(transitionTimeDuration)
-                        .style("stroke-width", "4px");
+                    // Only run if the legend hasn't been recently clicked
+                    if(!$('.legend').hasClass('clicked')) {
+                        d3.select(this)
+                            .attr("height", 12)
+                            .attr("width", 27)
 
-                    d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
-                        .attr("r", function(d, i) { return 4 })
+                        d3.select("path." + d.key).transition().duration(transitionTimeDuration)
+                            .style("stroke-width", "4px");
 
-                    // Fade out the other lines
-                    var otherlines = $(".line").not("path." + d.key);
-                    d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
-                        .style("opacity", 0.3)
-                        .style("stroke-width", 1.5)
-                        .style("stroke", "gray");
+                        d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
+                            .attr("r", function(d, i) { return 4 })
 
-                    var othercircles = $("circle").not("circle." + d.key);
-                    d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
-                       .style("opacity", 0.3)
-                       .style("stroke", "gray");
+                        // Fade out the other lines
+                        var otherlines = $(".line").not("path." + d.key);
+                        d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
+                            .style("opacity", 0.3)
+                            .style("stroke-width", 1.5)
+                            .style("stroke", "gray");
+
+                        var othercircles = $("circle").not("circle." + d.key);
+                        d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
+                           .style("opacity", 0.3)
+                           .style("stroke", "gray");
+                    }
                 })
                 .on("mouseout", function(d) {
-                    d3.select(this)
-                        .attr("height", 10)
-                        .attr("width", 25)
 
-                    d3.select("path." + d.key).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
-                        .style("stroke-width", "1.5px");
+                    //if($('.legend').hasClass('clicked')) transitionTimeDelay = 100;
+                    // Only run if the legend hasn't been recently clicked
+                    if(!$('.legend').hasClass('clicked')) {
+                        d3.select(this)
+                            .attr("height", 10)
+                            .attr("width", 25)
 
-                    d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
-                        .attr("r", function(d, i) { return 2 })
+                        d3.select("path." + d.key).transition().duration(transitionTimeDuration)
+                            .style("stroke-width", "1.5px");
 
-                    // Make the other lines normal again
-                    var otherlines = $('.line').not("path." + d.key);
-                    d3.selectAll(otherlines).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
-                        .style("opacity", 1)
-                        .style("stroke-width", 1.5)
-                        .style("stroke", function(d) { return color(d.key); });
+                        d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
+                            .attr("r", function(d, i) { return 2 })
 
-                    var othercircles = $("circle").not("circle." + d.key);
-                    d3.selectAll(othercircles).transition().duration(transitionTimeDuration).delay(transitionTimeDelay)
-                        .style("opacity", 1)
-                        .style("stroke", function(d) { return color(dimKey(d)); });
+                        // Make the other lines normal again
+                        var otherlines = $('.line').not("path." + d.key);
+                        d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
+                            .style("opacity", 1)
+                            .style("stroke-width", 1.5)
+                            .style("stroke", function(d) { return color(d.key); });
+
+                        var othercircles = $("circle").not("circle." + d.key);
+                        d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
+                            .style("opacity", 1)
+                            .style("stroke", function(d) { return color(dimKey(d)); });
+                        }
                 })
                 .on("click", function(d) {
 
+                    // Effectively disables the mouseover and mouseout events until this transition is done
+                    $('.legend').addClass('clicked');
+                    setTimeout(function () { $('.legend').removeClass('clicked') }, 1000);
+
                     var selectedPath = svg.select("path." + d.key);
-                    //var totalLength = selectedPath.node().getTotalLength();
 
                     if (d.visible === 1) {
                         d.visible = 0;
@@ -238,7 +251,7 @@ function multilineChart() {
                     updateLines();
                     updateCircles();
 
-                    svg.select("rect." + d.key).transition().duration(transitionTimeDuration)
+                    svg.select("rect." + d.key).transition().duration(transitionTimeDuration).delay(300)
                         .attr("fill", function(d) {
                             if (d.visible === 1) {
                                 return color(d.key);
@@ -247,7 +260,7 @@ function multilineChart() {
                             }
                         })
                     
-                    svg.selectAll("circle." + d.key).transition().duration(transitionTimeDuration * 2)
+                    svg.selectAll("circle." + d.key).transition().duration(transitionTimeDuration * 2).delay(300)
                         .style("display", function(a) {
                             if(d.visible === 1) {
                                 return "inline";
@@ -259,7 +272,7 @@ function multilineChart() {
             legend.append("text")
                 .attr("class", "legendLabel")
                 .attr("x", function(d) { return width + 65; })
-                .attr("y", function(d,i) { return height - 342 + (i*30); })
+                .attr("y", function(d,i) { return height - 482 + (i*25); })
                 .text( function(d) { return d.key; })
                 .attr("font-size", "11px")
                 .attr("fill", "black");
@@ -309,7 +322,9 @@ function multilineChart() {
                 svg.selectAll(".circle circle")
                     .transition().duration(transitionTimeDuration * 2)
                     .delay(function(d, i) { return i/2; })
-                    .attr("cy", function(d, i) { return y(d.pfcLevel) });
+                    .attr("cy", function(d, i) { 
+                      return y(d.pfcLevel) 
+                    });
             }
 
         });
