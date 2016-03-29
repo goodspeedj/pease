@@ -124,97 +124,95 @@ for line in in_iter:
                 if col == 'NA':
                     col = 'null'
                 # PFOA
-                if colnum == 20:
-
+                if colnum == 21:
                     print insertStub + line[1] + "', " + str(wellID) + ", 1, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFOS
-                if colnum == 19:
+                if colnum == 20:
                     print insertStub + line[1] + "', " + str(wellID) + ", 2, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFHxS
-                if colnum == 15:
+                if colnum == 16:
                     print insertStub + line[1] + "', " + str(wellID) + ", 3, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFHxA
-                if colnum == 16:
+                if colnum == 17:
                     print insertStub + line[1] + "', " + str(wellID) + ", 4, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFOSA
-                if colnum == 18:
+                if colnum == 19:
                     print insertStub + line[1] + "', " + str(wellID) + ", 5, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFBA
-                if colnum == 9:
+                if colnum == 10:
                     print insertStub + line[1] + "', " + str(wellID) + ", 6, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFBS
-                if colnum == 8:
+                if colnum == 9:
                     print insertStub + line[1] + "', " + str(wellID) + ", 7, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFDA
-                if colnum == 11:
+                if colnum == 12:
                     print insertStub + line[1] + "', " + str(wellID) + ", 8, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFDS
-                if colnum == 10:
+                if colnum == 11:
                     print insertStub + line[1] + "', " + str(wellID) + ", 9, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFDoA
-                if colnum == 12:
+                if colnum == 13:
                     print insertStub + line[1] + "', " + str(wellID) + ", 11, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFHpS
-                if colnum == 11:
+                if colnum == 12:
                     print insertStub + line[1] + "', " + str(wellID) + ", 12, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFHpA
-                if colnum == 14:
+                if colnum == 15:
                     print insertStub + line[1] + "', " + str(wellID) + ", 13, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFNA
-                if colnum == 17:
+                if colnum == 18:
                     print insertStub + line[1] + "', " + str(wellID) + ", 14, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFPeA
-                if colnum == 21:
+                if colnum == 22:
                     print insertStub + line[1] + "', " + str(wellID) + ", 15, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFTeDA
-                if colnum == 22:
+                if colnum == 23:
                     print insertStub + line[1] + "', " + str(wellID) + ", 16, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFTrDA
-                if colnum == 23:
+                if colnum == 24:
                     print insertStub + line[1] + "', " + str(wellID) + ", 17, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # PFUnA
-                if colnum == 24:
+                if colnum == 25:
                     print insertStub + line[1] + "', " + str(wellID) + ", 18, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # 6:2 FTS
-                if colnum == 2:
-                    print "*** " + str(col)
+                if colnum == 3:
                     print insertStub + line[1] + "', " + str(wellID) + ", 19, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # 8:2 FTS
-                if colnum == 3:
+                if colnum == 4:
                     print insertStub + line[1] + "', " + str(wellID) + ", 20, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # EtFOSA
-                if colnum == 4:
+                if colnum == 5:
                     print insertStub + line[1] + "', " + str(wellID) + ", 21, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # EtFOSE
-                if colnum == 5:
+                if colnum == 6:
                     print insertStub + line[1] + "', " + str(wellID) + ", 22, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # MEFOSA
-                if colnum == 6:
+                if colnum == 7:
                     print insertStub + line[1] + "', " + str(wellID) + ", 23, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
                 # MEFOSE
-                if colnum == 7:
+                if colnum == 8:
                     print insertStub + line[1] + "', " + str(wellID) + ", 24, "  + "'" + dateStr + "', " + str(col) + ", " + str(noteID) + ");"
 
 
