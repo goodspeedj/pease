@@ -7,7 +7,6 @@ function multilineChart() {
             data.forEach(function(d) {
                 d.sampleDate = parseDate(d.sampleDate);
                 d.pfcLevel = +d.pfcLevel;
-                //d.visible = 1;
             });
 
             // nest data
@@ -19,13 +18,13 @@ function multilineChart() {
                 d.visible = 1;
             });
 
-            console.log(nested_data);
+            nested_data.sort(function(a, b) {
+                return a.values[0][sortBy] - b.values[0][sortBy];
+            });
 
-            color.domain(data.map(function(d) {
+            color.domain(nested_data.map(function(d) {
                 return dimKey(d);
             }));
-
-
 
             var line = d3.svg.line()
               .interpolate("linear")
@@ -174,7 +173,7 @@ function multilineChart() {
                 .attr("width", 25)
                 .attr("class", function(d) { return d.key; })
                 .attr("x", width + 30)
-                .attr("y", function(d,i) { return height - 490 + (i*25); })
+                .attr("y", function(d,i) { return height - 495 + (i*25); })
                 .attr("stroke", function(d) { return color(d.key);})
                 .attr("fill", function(d) { return color(d.key); })
                 .on("mouseover", function(d) {
@@ -272,7 +271,7 @@ function multilineChart() {
             legend.append("text")
                 .attr("class", "legendLabel")
                 .attr("x", function(d) { return width + 65; })
-                .attr("y", function(d,i) { return height - 482 + (i*25); })
+                .attr("y", function(d,i) { return height - 487 + (i*25); })
                 .text( function(d) { return d.key; })
                 .attr("font-size", "11px")
                 .attr("fill", "black");
@@ -335,6 +334,13 @@ function multilineChart() {
     chart.dimKey = function(value) {
         if (!arguments.length) return dimKey;
         dimKey = value;
+        return chart;
+    };
+
+    // Get/set the sort by field
+    chart.sortBy = function(value) {
+        if (!arguments.length) return sortBy;
+        sortBy = value;
         return chart;
     };
 

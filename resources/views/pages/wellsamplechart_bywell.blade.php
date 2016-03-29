@@ -59,7 +59,8 @@
       @include('partials.multiline')
 
       var chart = multilineChart()
-            .dimKey(function(d) { return d.shortName; });
+            .dimKey(function(d) { return d.shortName; })
+            .sortBy("chemID");
 
       d3.select("#chart").datum(data).call(chart);
 

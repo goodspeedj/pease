@@ -58,7 +58,8 @@
       @include('partials.multiline')
 
       var chart = multilineChart()
-            .dimKey(function(d) { return d.wellName; });
+            .dimKey(function(d) { return d.wellName; })
+            .sortBy("wellID");
 
       d3.select("#chart").datum(data).call(chart);
 
