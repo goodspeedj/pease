@@ -36,7 +36,6 @@ function multilineChart() {
               .x(function(d) { return x(d.sampleDate); })
               .y(function(d) { return y(d.pfcLevel); });
 
-
             x.domain(d3.extent(data, function(d) { return d.sampleDate; }));
             y.domain(d3.extent(data, function(d) { return d.pfcLevel; }));
 
@@ -61,6 +60,24 @@ function multilineChart() {
               .attr("dy", ".71em")
               .style("text-anchor", "end")
               .text("PFC Level");
+
+            var pfoaEPAHA = svg.append("line")
+              .attr("class", "pfoaEPAHA")
+              .style("stroke", "red")
+              .attr("stroke-dasharray","5,5")
+              .attr("x1", 0)
+              .attr("y1", y(epaPHA_PFOA))
+              .attr("x2", width)
+              .attr("y2", y(epaPHA_PFOA));
+
+            var pfosEPAHA = svg.append("line")
+              .attr("class", "pfosEPAHA")
+              .style("stroke", "red")
+              .attr("stroke-dasharray","10,10")
+              .attr("x1", 0)
+              .attr("y1", y(epaPHA_PFOS))
+              .attr("x2", width)
+              .attr("y2", y(epaPHA_PFOS));
 
 
             // bind data to the lines
@@ -289,6 +306,22 @@ function multilineChart() {
                     .attr("d", function(d) {
                         return line(d.values);
                     });
+
+                svg.selectAll(".pfoaEPAHA")
+                    .transition().duration(transitionTimeDuration * 4).delay(300)
+                    .attr("x1", 0)
+                    .attr("y1", y(epaPHA_PFOA))
+                    .attr("x2", width)
+                    .attr("y2", y(epaPHA_PFOA));
+
+                svg.selectAll(".pfosEPAHA")
+                    .transition().duration(transitionTimeDuration * 4).delay(300)
+                    .attr("x1", 0)
+                    .attr("y1", y(epaPHA_PFOS))
+                    .attr("x2", width)
+                    .attr("y2", y(epaPHA_PFOS));
+
+
             }
 
             // update the circles on a Y axis update

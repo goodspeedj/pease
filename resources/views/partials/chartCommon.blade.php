@@ -38,3 +38,6 @@ var svg = d3.select("#chart").append("svg")
 
 var transitionTimeDuration = 500,
     transitionTimeDelay = 100;
+
+var epaPHA_PFOA = .4;
+var epaPHA_PFOS = .2;
