@@ -36,5 +36,5 @@ var svg = d3.select("#chart").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-var transitionTimeDuration = 200,
+var transitionTimeDuration = 500,
     transitionTimeDelay = 100;
