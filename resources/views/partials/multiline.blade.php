@@ -91,9 +91,9 @@ function multilineChart() {
                       //.duration(transitionTimeDuration)
                       .style("stroke-width", "4px");
 
-                  d3.selectAll("circle." + d.key).transition()
+                  d3.selectAll(".circle." + d.key + " circle").transition()
                       //.duration(transitionTimeDuration)
-                      .attr("r", function(d, i) { return 4 })
+                      .attr("r", function(d, i) { console.log("fds"); return 4 })
 
                   // Fade out the other lines
                   var otherlines = $(".line").not("path." + d.key);
@@ -103,7 +103,7 @@ function multilineChart() {
                       .style("stroke-width", 1.5)
                       .style("stroke", "gray");
 
-                  var othercircles = $("circle").not("circle." + d.key);
+                  var othercircles = $("circle").not(".circle." + d.key + " circle");
                   d3.selectAll(othercircles).transition()
                       //.duration(transitionTimeDuration)
                       .style("opacity", 0.3)
@@ -124,7 +124,7 @@ function multilineChart() {
                       //.duration(100)
                       .style("stroke-width", "1.5px");
 
-                  d3.selectAll("circle." + d.key).transition()
+                  d3.selectAll(".circle." + d.key + " circle").transition()
                       //.duration(100)
                       .attr("r", function(d, i) { return 2 })
 
@@ -136,7 +136,7 @@ function multilineChart() {
                       .style("stroke-width", 1.5)
                       .style("stroke", function(d) { return color(d.key); });
 
-                  var othercircles = $("circle").not("circle." + d.key);
+                  var othercircles = $("circle").not(".circle." + d.key + " circle");
                   d3.selectAll(othercircles).transition()
                       //.duration(transitionTimeDuration)
                       .style("opacity", 1)
@@ -171,8 +171,27 @@ function multilineChart() {
                 .attr("fill", "white")
                 .attr("cx", function(d, i) { return x(d.sampleDate) })
                 .attr("cy", function(d, i) { return y(d.pfcLevel) })
-                .attr("r", 2);
-                //.attr("class", function(d) { return dimKey(d); });
+                .attr("r", 2)
+                .on("mouseover", function(d) {
+
+                    d3.select(this).transition()
+                        .attr("r", function(d, i) { return 4 })
+
+                    // Show tooltips
+                    tooltipDetail.transition()
+                        .style("opacity", 0.8);
+                    tooltipDetail
+                        .html("<strong>" + longDesc(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
+                        .style("left", (d3.event.pageX + 10) + "px")
+                        .style("top", (d3.event.pageY - 25) + "px");
+                })
+                .on("mouseout", function(d) {
+                    d3.select(this).transition()
+                        .attr("r", function(d, i) { return 2 })
+
+                    // Hide the tooltip
+                    tooltipDetail.transition().style("opacity", 0);
+                });
 
             // Add the circles to the lines
             /*
@@ -237,6 +256,7 @@ function multilineChart() {
                         return "white";
                     }
                 })
+                .attr("style", "cursor:")
                 /*
                 .on("mouseover", function(d) {
                     //if($('.legend').hasClass('clicked')) transitionTimeDelay = 100;
@@ -310,9 +330,6 @@ function multilineChart() {
                     }
 
                     rescaleY();
-                    
-
-                    
 
                     svg.select("rect." + d.key).transition()
                         .attr("fill", function(d) {
@@ -326,9 +343,7 @@ function multilineChart() {
                     
                     svg.selectAll(".circle." + d.key).transition()
                         .style("display", function(a) {
-                            console.log(".circle " + d.key);
                             if(d.visible === 1) {
-                                console.log("here");
                                 return "inline";
                             }
                             else return "none";
@@ -424,6 +439,13 @@ function multilineChart() {
     chart.dimensions = function(value) {
         if (!arguments.length) return dimensions;
         dimensions = value;
+        return chart;
+    };
+
+    // Get/set the dimensions
+    chart.longDesc = function(value) {
+        if (!arguments.length) return longDesc;
+        longDesc = value;
         return chart;
     };
 

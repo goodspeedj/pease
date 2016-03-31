@@ -86,6 +86,7 @@
 
  var chart = multilineChart()
   .dimKey(function(d) { return d.wellName; })
+  .longDesc(function(d) {return d.wellDesc; })
   .sortBy("wellID")
   .dimensions(dimensions);
 
