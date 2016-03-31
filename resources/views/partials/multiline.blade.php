@@ -256,7 +256,7 @@ function multilineChart() {
                         return "white";
                     }
                 })
-                .attr("style", "cursor:")
+                .attr("style", "cursor: pointer")
                 /*
                 .on("mouseover", function(d) {
                     //if($('.legend').hasClass('clicked')) transitionTimeDelay = 100;
