@@ -8,7 +8,7 @@ function multilineChart() {
                 d.sampleDate = parseDate(d.sampleDate);
                 d.pfcLevel = +d.pfcLevel;
                 dimensions.forEach(function(a) {
-                    if (a.key === d.shortName) {
+                    if (a.key === dimKey(d)) {
                         d.visible = a.value;
                     }
                 });
@@ -161,6 +161,7 @@ function multilineChart() {
                 .attr("r", 2)
                 .attr("class", function(d) { return dimKey(d); })
                 .style("display", function(d) {
+                    console.log(d);
                     if(d.visible === 1) {
                         return "inline";
                     }
