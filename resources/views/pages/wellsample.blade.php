@@ -26,7 +26,7 @@
 
     <p>&nbsp;</p>
 
-    <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <table id="table" class="table table-striped table-bordered small" cellspacing="0" width="100%">
       <thead>
         <th>Date</th>
         <th>PFOA</th>
