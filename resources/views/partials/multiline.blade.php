@@ -193,48 +193,6 @@ function multilineChart() {
                     tooltipDetail.transition().style("opacity", 0);
                 });
 
-            // Add the circles to the lines
-            /*
-            circles.append("circle")
-                //.attr("stroke", function(d) { console.log(dimKey(d)); return color(dimKey(d)); }) //d.key
-                .attr("stroke", function(d) { return color(d.key); })
-                .attr("fill", "white")
-                //.attr("cx", function(d, i) { return x(d.sampleDate) })
-                .attr("cx", function(d, i) { console.log(d.values['sampleDate']); return x(d.values) })
-                //.attr("cy", function(d, i) { return y(d.pfcLevel) })
-                .attr("cy", function(d, i) { return y(d.values[pfcLevel]) })
-                .attr("r", 2)
-                //.attr("class", function(d) { return dimKey(d); })
-                .attr("class", function(d) { return d.key; })
-                .style("display", function(d) {
-                    console.log("visible: " + d.visible);
-                    if(d.visible === 1) {
-                        return "inline";
-                    }
-                    else return "none";
-                })
-                .on("mouseover", function(d) {
-
-                    d3.select(this).transition().duration(transitionTimeDuration)
-                        .attr("r", function(d, i) { return 4 })
-
-                    // Show tooltips
-                    tooltipDetail.transition().duration(transitionTimeDuration)
-                        .style("opacity", 0.8);
-                    tooltipDetail
-                        .html("<strong>" + dimKey(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
-                        .style("left", (d3.event.pageX + 10) + "px")
-                        .style("top", (d3.event.pageY - 25) + "px");
-                })
-                .on("mouseout", function(d) {
-                    d3.select(this).transition().duration(100)
-                        .attr("r", function(d, i) { return 2 })
-
-                    // Hide the tooltip
-                    tooltipDetail.transition().duration(500).style("opacity", 0);
-                });
-            */
-
             // bind the data for the legend
             var legend = svg.selectAll(".legend")
                 .data(nested_data)
@@ -257,64 +215,6 @@ function multilineChart() {
                     }
                 })
                 .attr("style", "cursor: pointer")
-                /*
-                .on("mouseover", function(d) {
-                    //if($('.legend').hasClass('clicked')) transitionTimeDelay = 100;
-
-                    // Only run if the legend hasn't been recently clicked
-                    if(!$('.legend').hasClass('clicked')) {
-                        d3.select(this)
-                            .attr("height", 12)
-                            .attr("width", 27)
-
-                        d3.select("path." + d.key).transition().duration(transitionTimeDuration)
-                            .style("stroke-width", "4px");
-
-                        d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
-                            .attr("r", function(d, i) { return 4 })
-
-                        // Fade out the other lines
-                        var otherlines = $(".line").not("path." + d.key);
-                        d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
-                            .style("opacity", 0.3)
-                            .style("stroke-width", 1.5)
-                            .style("stroke", "gray");
-
-                        var othercircles = $("circle").not("circle." + d.key);
-                        d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
-                           .style("opacity", 0.3)
-                           .style("stroke", "gray");
-                    }
-                })
-                .on("mouseout", function(d) {
-
-                    //if($('.legend').hasClass('clicked')) transitionTimeDelay = 100;
-                    // Only run if the legend hasn't been recently clicked
-                    if(!$('.legend').hasClass('clicked')) {
-                        d3.select(this)
-                            .attr("height", 10)
-                            .attr("width", 25)
-
-                        d3.select("path." + d.key).transition().duration(transitionTimeDuration)
-                            .style("stroke-width", "1.5px");
-
-                        d3.selectAll("circle." + d.key).transition().duration(transitionTimeDuration)
-                            .attr("r", function(d, i) { return 2 })
-
-                        // Make the other lines normal again
-                        var otherlines = $('.line').not("path." + d.key);
-                        d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
-                            .style("opacity", 1)
-                            .style("stroke-width", 1.5)
-                            .style("stroke", function(d) { return color(d.key); });
-
-                        var othercircles = $("circle").not("circle." + d.key);
-                        d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
-                            .style("opacity", 1)
-                            .style("stroke", function(d) { return color(dimKey(d)); });
-                        }
-                })
-                */
                 .on("click", function(d) {
 
                     // Effectively disables the mouseover and mouseout events until this transition is done
