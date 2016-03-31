@@ -154,7 +154,7 @@ CREATE table WellSample (
     chemID          int(11)         UNSIGNED    not null,
     noteID          int(11)         UNSIGNED    null,
     sampleDate      date                        not null,
-    pfcLevel        decimal(10,7)   UNSIGNED    null,
+    pfcLevel        decimal(7,4)    UNSIGNED    null,
     PRIMARY KEY (wellSampleID),
     FOREIGN KEY (wellID)    REFERENCES Well (wellID)                ON DELETE CASCADE,
     FOREIGN KEY (chemID)    REFERENCES Chemical (chemID)            ON DELETE SET null,
