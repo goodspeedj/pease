@@ -28,7 +28,11 @@
     </div><!-- /.container -->
 
     <script type="text/javascript">
+
+      var wellData = <?php echo $wellData ?>;
       
+      console.log(wellData); 
+
       var map;
       var styles = [
         {
@@ -44,12 +48,20 @@
           ]
         }
       ];
+
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 43.073809, lng: -70.806720},
           zoom: 14
         });
         map.setOptions({ styles: styles });
+
+        wellData.forEach(function(entry) {
+          	console.log(entry.wellName);
+
+          
+      	});
 
         var haven = new google.maps.Marker({
           position: {lat: Number(havenWellLat), lng: Number(havenWellLong)},
@@ -72,6 +84,7 @@
           icon: getMarker(harrisonWellYeild, 'blue'),
           title: 'Harrison Well'
         });
+
         function addrToLatLong(address, pfcLevel, shortName) {
           var geocoder = new google.maps.Geocoder();
           geocoder.geocode( { 'address': address}, function(results, status) {

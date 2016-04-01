@@ -8,6 +8,8 @@ use DB;
 class Well extends Model
 {
 
+	protected $table = "Well";
+
     /**
      * Query to return regular well data
      *

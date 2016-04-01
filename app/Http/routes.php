@@ -31,13 +31,13 @@ Route::get('info', 'InfoController@index');
 /*
 | Provides the route for the exposure map
 */
-Route::get('map', 'MapController@index');
+//Route::get('map', 'MapController@index');
 
 
 /*
 | Provides the route for the exposure map
 */
-Route::get('wellmap', 'MapController@wellmap');
+Route::get('wellmap', 'WellController@wellmap');
 
 
 /*
