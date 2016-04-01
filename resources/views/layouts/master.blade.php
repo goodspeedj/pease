@@ -24,17 +24,20 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
-            <li><a href="info">Info</a></li>
             <li class="dropdown">
-              <a href="wellsample" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Well Data<span class="caret"></span></a>
+              <a href="/wellsample/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Well Samples - Tables<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="welldata/table">Well Data - tabular</a></li>
-                <li><a href="wellchart/bywell">Chart - by Well</a></li>
-                <li><a href="wellchart/bypfc">Chart - by PFC</a></li>
+                <li><a href="/wellsample/haven">By Well</a></li>
+                <li><a href="/wellsample/pfoa">By PFC</a></li>
               </ul>
             </li>
-            <li><a href="participant">Participant Data</a></li>
-            <li><a href="map">Map</a></li>
+            <li class="dropdown">
+              <a href="/wellsample/haven/chart" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Well Samples - Charts<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/wellsample/haven/chart">By Well</a></li>
+                <li><a href="/wellsample/pfoa/chart">By PFC</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
