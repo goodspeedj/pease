@@ -35,6 +35,12 @@ Route::get('map', 'MapController@index');
 
 
 /*
+| Provides the route for the exposure map
+*/
+Route::get('wellmap', 'MapController@wellmap');
+
+
+/*
 | Provides the route for the participant listing
 */
 Route::get('participant', 'ParticipantController@index');
