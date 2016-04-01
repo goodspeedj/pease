@@ -61,7 +61,7 @@ function multilineChart() {
               .style("text-anchor", "end")
               .text("PFC Level");
 
-            var pfoaEPAHA = svg.append("line")
+            svg.append("line")
               .attr("class", "pfoaEPAHA")
               .style("stroke", "red")
               .attr("stroke-dasharray","5,5")
@@ -70,7 +70,7 @@ function multilineChart() {
               .attr("x2", width)
               .attr("y2", y(epaPHA_PFOA));
 
-            var pfosEPAHA = svg.append("line")
+            svg.append("line")
               .attr("class", "pfosEPAHA")
               .style("stroke", "red")
               .attr("stroke-dasharray","10,10")
@@ -78,6 +78,20 @@ function multilineChart() {
               .attr("y1", y(epaPHA_PFOS))
               .attr("x2", width)
               .attr("y2", y(epaPHA_PFOS));
+
+            svg.append("text")
+              .attr("class", "pfoaEPAHAText")
+              .attr("x", width - 170)
+              .attr("y", y(epaPHA_PFOA) - 10)
+              .style("fill", "red")
+              .text("EPA Public Health Advisory - PFOA");
+
+            svg.append("text")
+              .attr("class", "pfosEPAHAText")
+              .attr("x", width - 170)
+              .attr("y", y(epaPHA_PFOS) - 10)
+              .style("fill", "red")
+              .text("EPA Public Health Advisory - PFOS");
 
 
             // bind data to the lines
@@ -308,21 +322,23 @@ function multilineChart() {
                     });
 
                 svg.selectAll(".pfoaEPAHA")
-                    .transition().duration(transitionTimeDuration * 4).delay(300)
-                    .attr("x1", 0)
+                    .transition().duration(transitionTimeDuration * 4).delay(100)
                     .attr("y1", y(epaPHA_PFOA))
-                    .attr("x2", width)
                     .attr("y2", y(epaPHA_PFOA));
 
                 svg.selectAll(".pfosEPAHA")
-                    .transition().duration(transitionTimeDuration * 4).delay(300)
-                    .attr("x1", 0)
+                    .transition().duration(transitionTimeDuration * 4).delay(100)
                     .attr("y1", y(epaPHA_PFOS))
-                    .attr("x2", width)
                     .attr("y2", y(epaPHA_PFOS));
 
+                svg.selectAll(".pfoaEPAHAText")
+                    .transition().duration(transitionTimeDuration * 4).delay(100)
+                    .attr("y", y(epaPHA_PFOA) - 10);
 
-            }
+                svg.selectAll(".pfosEPAHAText")
+                    .transition().duration(transitionTimeDuration * 4).delay(100)
+                    .attr("y", y(epaPHA_PFOS) - 10);
+                  }
 
             // update the circles on a Y axis update
             function updateCircles() {
