@@ -18,8 +18,11 @@ class Well extends Model
     public function scopeWellData($query)
     {
         return $query
-        		->select('Well.wellID', 'WellType.wellType', 'Well.wellName', 'Well.wellDesc', 'Well.wellLat', 'Well.wellLong', 'Well.wellYeild', 'Well.wellActive')
-                ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID');
+        		->select('Well.wellID', 'WellType.wellType', 'Well.wellName', 'Well.wellDesc', 'Well.wellLat', 'Well.wellLong', 'Well.wellYeild', 'Well.wellActive', DB::raw('avg(WellSample.pfcLevel) as pfcAvg'))
+                ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID')
+                ->join('WellSample', 'Well.wellID', '=', 'WellSample.WellID')
+                ->where('WellSample.chemID', '=', 2)
+                ->groupBy('Well.wellID');
     }
 
 }
