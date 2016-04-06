@@ -22,7 +22,8 @@ class Well extends Model
                 ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID')
                 ->join('WellSample', 'Well.wellID', '=', 'WellSample.WellID')
                 ->where('WellSample.chemID', '=', 2)
-                ->groupBy('Well.wellID');
+                ->groupBy('Well.wellID')
+                ->orderBy('pfcAvg', 'DESC');
     }
 
 }

@@ -54,6 +54,8 @@
 
         wellData.forEach(function(entry) {
             var color;
+            var pfcAverage = Math.round(entry.pfcAvg * 1000) / 1000;
+            console.log("avg: " + pfcAverage);
 
             if(entry.wellType === 'Production Well') {
                 color = 'blue';
@@ -70,8 +72,8 @@
             var marker = new google.maps.Marker({
               position: {lat: Number(entry.wellLat), lng: Number(entry.wellLong)},
               map: map,
-              icon: getMarker((entry.pfcAvg * 500), color),
-              title: entry.wellDesc
+              icon: getMarker((entry.pfcAvg * 800) + 1, color),
+              title: entry.wellDesc + "\n" + pfcAverage
             });
 
         });
