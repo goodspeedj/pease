@@ -24,6 +24,17 @@ class WellController extends Controller {
     {
         $wellData = Well::wellData()->get();
         return view('pages.wellmap', compact('wellData'));
-        //return view('pages.wellmap');
+    }
+
+
+    /**
+     * Show the well sample average for PFC in a map
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfcMap($pfc) 
+    {
+        $wellData = Well::wellData($pfc)->get();
+        return view('pages.wellpfcmap', compact('wellData'));
     }
 }

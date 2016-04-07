@@ -37,7 +37,8 @@ Route::get('info', 'InfoController@index');
 /*
 | Provides the route for the exposure map
 */
-Route::get('wellmap', 'WellController@wellmap');
+Route::get('wellmap', 'WellController@index');
+Route::get('wellmap/{pfc}', 'WellController@pfcMap');
 
 
 /*

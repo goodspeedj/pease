@@ -15,13 +15,16 @@ class Well extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWellData($query)
+    public function scopeWellData($query, $pfc)
     {
         return $query
-        		->select('Well.wellID', 'WellType.wellType', 'Well.wellName', 'Well.wellDesc', 'Well.wellLat', 'Well.wellLong', 'Well.wellYeild', 'Well.wellActive', DB::raw('avg(WellSample.pfcLevel) as pfcAvg'))
+        		->select('Well.wellID', 'WellType.wellType', 'Well.wellName', 'Well.wellDesc', 
+        			     'Well.wellLat', 'Well.wellLong', 'Well.wellYeild', 'Well.wellActive', 
+        			     DB::raw('avg(WellSample.pfcLevel) as pfcAvg'))
                 ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID')
                 ->join('WellSample', 'Well.wellID', '=', 'WellSample.WellID')
-                ->where('WellSample.chemID', '=', 2)
+                ->join('Chemical', 'Chemical.chemID', '=', 'WellSample.chemID')
+                ->where('Chemical.shortName', '=', $pfc)
                 ->groupBy('Well.wellID')
                 ->orderBy('pfcAvg', 'DESC');
     }
