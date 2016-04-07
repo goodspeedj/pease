@@ -61,18 +61,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for Haven in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function havenChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(1)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for Smith
      *
      * @return \Illuminate\View\View
@@ -83,17 +71,6 @@ class WellSampleController extends Controller {
         return view('pages.wellsample', compact('wellSamples'));
     }
 
-
-    /**
-     * Show the well sample records for Smith in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function smithChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(2)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
 
 
     /**
@@ -108,17 +85,6 @@ class WellSampleController extends Controller {
     }
 
 
-    /**
-     * Show the well sample records for Harrison in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function harrisonChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(3)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
 
     /**
      * Show the well sample records for Collins
@@ -132,17 +98,6 @@ class WellSampleController extends Controller {
     }
 
 
-    /**
-     * Show the well sample records for Collins in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function collinsChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(4)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
 
     /**
      * Show the well sample records for Portsmouth
@@ -153,18 +108,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(5)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for Portsmouth in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function portsmouthChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(5)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -181,18 +124,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for WWTP in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function wwtpChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(6)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for DES office
      *
      * @return \Illuminate\View\View
@@ -201,18 +132,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(7)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for DES in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function desChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(7)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -229,18 +148,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for GBK Pre in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function gbk_preChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(8)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for GBK Post
      *
      * @return \Illuminate\View\View
@@ -249,18 +156,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(9)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for GBK Post in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function gbk_post1Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(9)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -277,18 +172,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for GBK Post in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function gbk_post2Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(10)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for DSC Pre
      *
      * @return \Illuminate\View\View
@@ -297,18 +180,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(11)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for DSC Pre in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function dsc_preChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(11)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -325,18 +196,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for DSC Post in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function dsc_postChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(12)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for Firestation
      *
      * @return \Illuminate\View\View
@@ -345,18 +204,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(13)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for Firestation in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function firestationChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(13)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -373,18 +220,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for csw-1d in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function csw1dChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(14)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for CSW-1S
      *
      * @return \Illuminate\View\View
@@ -393,18 +228,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(15)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for csw-1s in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function csw1sChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(15)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -421,18 +244,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for csw-2r in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function csw2rChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(16)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for HMW-3
      *
      * @return \Illuminate\View\View
@@ -441,18 +252,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(17)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for HMW-3 in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function hmw3Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(17)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -469,18 +268,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for HMW-8R in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function hmw8rChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(18)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for HMW-14
      *
      * @return \Illuminate\View\View
@@ -489,18 +276,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(19)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for HMW-14 in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function hmw14Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(19)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -517,18 +292,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for HMW-15 in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function hmw15Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(20)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for SMW-A
      *
      * @return \Illuminate\View\View
@@ -537,18 +300,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(21)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for SMW-A in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function smwaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(21)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -565,18 +316,6 @@ class WellSampleController extends Controller {
 
 
     /**
-     * Show the well sample records for SMW-1 in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function smw1Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(22)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-    /**
      * Show the well sample records for SMW-13
      *
      * @return \Illuminate\View\View
@@ -585,18 +324,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::crosstab(23)->get();        
         return view('pages.wellsample', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for SMW-13 in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function smw13Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(23)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
     }
 
 
@@ -610,19 +337,5 @@ class WellSampleController extends Controller {
         $wellSamples = WellSample::crosstab(24)->get();        
         return view('pages.wellsample', compact('wellSamples'));
     }
-
-
-    /**
-     * Show the well sample records for PSW-1 in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function psw1Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByWell(24)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
 
 }
