@@ -41,6 +41,30 @@ class WellSampleController extends Controller {
      *
      * @return \Illuminate\View\View
      */
+    public function wellChart($wellName) 
+    {
+        $wellSamples = WellSample::wellSampleByWell($wellName)->get();
+        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for PFCs in a chart
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pfcChart($pfc) 
+    {
+        $wellSamples = WellSample::wellSampleByPfc($pfc)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+    }
+
+
+    /**
+     * Show the well sample records for Haven in a chart
+     *
+     * @return \Illuminate\View\View
+     */
     public function havenChart() 
     {
         $wellSamples = WellSample::wellSampleByWell(1)->get();
@@ -597,298 +621,6 @@ class WellSampleController extends Controller {
     {
         $wellSamples = WellSample::wellSampleByWell(24)->get();
         return view('pages.wellsamplechart_bywell', compact('wellSamples'));
-    }
-
-
-
-
-
-
-    /**
-     * Show the well sample records for PFOA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfoaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(1)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFOS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfosChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(2)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFHxS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfhxsChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(3)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFHxA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfhxaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(4)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFOSA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfosaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(5)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFBA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfbaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(6)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFBS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfbsChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(7)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFDA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfdaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(8)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFDS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfdsChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(9)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFDeA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfdeaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(10)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFDoA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfdoaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(11)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFHpS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfhpsChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(12)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFHpA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfhpaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(13)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFNA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfnaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(14)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFPeA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfpeaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(15)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFTeDA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pftedaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(16)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFTrDA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pftrdaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(17)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for PFUnA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function pfunaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(18)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for 6:2 FTS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function fts62Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(19)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for 8:2 FTS in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function fts82Chart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(20)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for EtFOSA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function etfosaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(21)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for EtFOSE in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function etfoseChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(22)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for MEFOSA in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function mefosaChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(23)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
-    }
-
-
-    /**
-     * Show the well sample records for MEFOSE in a chart
-     *
-     * @return \Illuminate\View\View
-     */
-    public function mefoseChart() 
-    {
-        $wellSamples = WellSample::wellSampleByPfc(24)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
     }
 
 

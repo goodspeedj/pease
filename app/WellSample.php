@@ -33,13 +33,13 @@ class WellSample extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWellSampleByWell($query, $wellID)
+    public function scopeWellSampleByWell($query, $wellName)
     {
         return $query
                 ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
                 ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
-                ->select('WellSample.sampleDate', 'Chemical.shortName', 'Chemical.longName', 'WellSample.pfcLevel', 'Chemical.chemID')
-                ->where('WellSample.wellID', '=', $wellID)
+                ->select('WellSample.sampleDate', 'Well.wellName', 'Chemical.shortName', 'Chemical.longName', 'WellSample.pfcLevel', 'Chemical.chemID')
+                ->where('Well.wellName', '=', $wellName)
                 ->orderBy('WellSample.sampleDate', 'desc')
                 ->orderBy('Chemical.shortName', 'asc');
     }
@@ -50,13 +50,13 @@ class WellSample extends Model
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeWellSampleByPfc($query, $chemID)
+    public function scopeWellSampleByPfc($query, $pfc)
     {
         return $query
                 ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
                 ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
-                ->select('WellSample.sampleDate', 'Chemical.chemID', 'WellSample.pfcLevel', 'Well.wellName', 'Well.wellDesc', 'Well.wellID')
-                ->where('Chemical.chemID', '=', $chemID)
+                ->select('WellSample.sampleDate', 'Chemical.chemID', 'Chemical.shortName', 'WellSample.pfcLevel', 'Well.wellName', 'Well.wellDesc', 'Well.wellID')
+                ->where('Chemical.shortName', '=', $pfc)
                 ->orderBy('WellSample.sampleDate', 'desc')
                 ->orderBy('Well.wellID', 'asc');
     }
