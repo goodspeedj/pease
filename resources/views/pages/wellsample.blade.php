@@ -29,27 +29,83 @@
     <table id="table" class="table table-striped table-bordered small" cellspacing="0" width="100%">
       <thead>
         <th>Date</th>
-        <th>PFOA</th>
-        <th>PFOS</th>
-        <th>PFHxS</th>
-        <th>PFOSA</th>
-        <th>PFNA</th>
-        <th>PFPeA</th>
-        <th>PFHxA</th>
+        <th>6:2 FTS</th>
+        <th>8:2 FTS</th>
+        <th>EtFOSA</th>
+        <th>EtFOSE</th>
+        <th>MeFOSA</th>
+        <th>MeFOSE</th>
+        <th>PFBS</th>
         <th>PFBA</th>
+        <th>PFDS</th>
+        <th>PFDA</th>
+        <th>PFDoA</th>
+        <th>PFHpS</th>
+        <th>PFHpA</th>
+        <th>PFHxS</th>
+        <th>PFHxA</th>
+        <th>PFNA</th>
+        <th>PFOSA</th>
+        <th>PFOS</th>
+        <th>PFOA</th>
+        <th>PFPeA</th>
+        <th>PFTeDA</th>
+        <th>PFTrDA</th>
+        <th>PFUnA</th>
       </thead>
       <tbody>
+        <tr>
+          <td class="bold">Provisional Health Advisory</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td class="bold" align="center">0.2</td>
+          <td class="bold" align="center">0.4</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+          <td align="center">-</td>
+        </tr>
         @foreach ($wellSamples as $wellSample)
           <tr>
-            <td>{{ $wellSample->sampleDate }}</td>
-            <td>{{ $wellSample->PFOA }} <sub>{{ $wellSample->PFOANote }}</sub></td>
-            <td>{{ $wellSample->PFOS }} <sub>{{ $wellSample->PFOSNote }}</sub></td>
-            <td>{{ $wellSample->PFHxS }} <sub>{{ $wellSample->PFHxSNote }}</sub></td>
-            <td>{{ $wellSample->PFOSA }} <sub>{{ $wellSample->PFOSANote }}</sub></td>
-            <td>{{ $wellSample->PFNA }} <sub>{{ $wellSample->PFNANote }}</sub></td>
-            <td>{{ $wellSample->PFPeA }} <sub>{{ $wellSample->PFPeANote }}</sub></td>
-            <td>{{ $wellSample->PFHxA }} <sub>{{ $wellSample->PFHxANote }}</sub></td>
-            <td>{{ $wellSample->PFBA }} <sub>{{ $wellSample->PFBANote }}</sub></td>
+            <td width="400px" align="center">{{ $wellSample->sampleDate }}</td>
+            <td align="center">{{ $wellSample->FTS62 }} <sub>{{ $wellSample->FTS62Note }}</sub></td>
+            <td align="center">{{ $wellSample->FTS82 }} <sub>{{ $wellSample->FTS82Note }}</sub></td>
+            <td align="center">{{ $wellSample->EtFOSA }} <sub>{{ $wellSample->EtFOSANote }}</sub></td>
+            <td align="center">{{ $wellSample->EtFOSE }} <sub>{{ $wellSample->EtFOSENote }}</sub></td>
+            <td align="center">{{ $wellSample->MeFOSA }} <sub>{{ $wellSample->MeFOSANote }}</sub></td>
+            <td align="center">{{ $wellSample->MeFOSE }} <sub>{{ $wellSample->MeFOSENote }}</sub></td>
+            <td align="center">{{ $wellSample->PFBS }} <sub>{{ $wellSample->PFBSNote }}</sub></td>
+            <td align="center">{{ $wellSample->PFBA }} <sub>{{ $wellSample->PFBANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFDS }} <sub>{{ $wellSample->PFDSNote }}</sub></td>
+            <td align="center">{{ $wellSample->PFDA }} <sub>{{ $wellSample->PFDANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFDoA }} <sub>{{ $wellSample->PFDoANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFHpS }} <sub>{{ $wellSample->PFHpSNote }}</sub></td>
+            <td align="center">{{ $wellSample->PFHpA }} <sub>{{ $wellSample->PFHpANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFHxS }} <sub>{{ $wellSample->PFHxSNote }}</sub></td>
+            <td align="center">{{ $wellSample->PFHxA }} <sub>{{ $wellSample->PFHxANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFNA }} <sub>{{ $wellSample->PFNANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFOSA }} <sub>{{ $wellSample->PFOSANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFOS }} <sub>{{ $wellSample->PFOSNote }}</sub></td>
+            <td align="center">{{ $wellSample->PFOA }} <sub>{{ $wellSample->PFOANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFPeA }} <sub>{{ $wellSample->PFPeANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFTeDA }} <sub>{{ $wellSample->PFTeDANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFTrDA }} <sub>{{ $wellSample->PFTrDANote }}</sub></td>
+            <td align="center">{{ $wellSample->PFUnA }} <sub>{{ $wellSample->PFUnANote }}</sub></td>
           </tr>
         @endforeach
       </tbody>
@@ -80,6 +136,74 @@
 
         $(document).ready(function() {
             $('#table').DataTable( {
+                rowCallback: function(row, data, index) {
+                  data.forEach(function(d, i) {
+                    if (index > 0) {
+                        if (parseFloat(d) > 1 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css({'background-color': '#67000d', 'color': 'white'})  
+                        } 
+                        else if (parseFloat(d) > 0.2 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css({'background-color': '#a50f15', 'color': 'white'})  
+                        }
+                        else if (parseFloat(d) > 0.1 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#cb181d')  
+                        }
+                        else if (parseFloat(d) > 0.05 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#ef3b2c')  
+                        }
+                        else if (parseFloat(d) > 0.009 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fb6a4a')  
+                        }
+                        else if (parseFloat(d) > 0.005 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fc9272')  
+                        }
+                        else if (parseFloat(d) > 0.001 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fcbba1')  
+                        }
+                        else if (parseFloat(d) > 0.0005 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fee0d2')  
+                        }
+                        else {
+                          console.log("ba");
+                        }
+                    }
+                    
+                  })  
+                },
+                "columnDefs": [
+                  {
+                    "targets": [ 1 ],
+                    "visible": false
+                  },
+                  {
+                    "targets": [ 2 ],
+                    "visible": false
+                  },
+                  {
+                    "targets": [ 3 ],
+                    "visible": false
+                  },  
+                  {
+                    "targets": [ 4 ],
+                    "visible": false
+                  },              
+                  {
+                    "targets": [ 5 ],
+                    "visible": false
+                  },
+                  {
+                    "targets": [ 6 ],
+                    "visible": false
+                  },
+                  {
+                    "targets": [ 21 ],
+                    "visible": false
+                  },
+                  {
+                    "targets": [ 22 ],
+                    "visible": false
+                  }       
+                ],
                 "order": [[ 0, 'desc' ], [1, 'asc']],
                 "pageLength": 20,
                 "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]

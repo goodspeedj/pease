@@ -2,6 +2,9 @@
 
 <style>
 	.small {
-		font-size: 8.5pt;
+		font-size: 7.5pt;
+	}
+	.bold {
+		font-weight: bold;
 	}
 </style>
