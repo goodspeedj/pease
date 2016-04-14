@@ -80,12 +80,8 @@
           <td align="center">-</td>
           <td align="center">-</td>
         </tr>
-        {{{ $wellSamples[20]->PFDoA or 'Default'  }}}
+
         @foreach ($wellSamples as $wellSample)
-
-
-          
-          
           <tr>
             <td width="400px" align="center">{{ $wellSample->sampleDate }}</td>
             <td align="center">{{ checkForZeroAndBlank($wellSample->FTS62) }} <sub>{{ $wellSample->FTS62Note }}</sub></td>
