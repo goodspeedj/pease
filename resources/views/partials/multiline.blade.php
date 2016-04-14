@@ -59,7 +59,7 @@ function multilineChart() {
               .attr("y", 6)
               .attr("dy", ".71em")
               .style("text-anchor", "end")
-              .text("PFC Level");
+              .text("PFC Level.  Micrograms per liter");
 
             svg.append("line")
               .attr("class", "pfoaEPAHA")
