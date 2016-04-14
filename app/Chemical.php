@@ -20,4 +20,17 @@ class Chemical extends Model
     	return $this->belongsTo('App\WellSample');
     }
 
+
+    /**
+     * Query to return PFC names
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePfc($query, $pfc)
+    {
+        return $query
+                ->select('Chemical.shortName', 'Chemical.longName')
+                ->where('Chemical.shortName', '=', $pfc);
+    }
+
 }
