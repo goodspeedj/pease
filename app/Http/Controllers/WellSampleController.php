@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\WellSample;
+use App\Chemical;
 use DB;
 
 class WellSampleController extends Controller {
@@ -56,7 +57,8 @@ class WellSampleController extends Controller {
     public function pfcChart($pfc) 
     {
         $wellSamples = WellSample::wellSampleByPfc($pfc)->get();
-        return view('pages.wellsamplechart_bypfc', compact('wellSamples'));
+        $chem = Chemical::pfc($pfc)->get();
+        return view('pages.wellsamplechart_bypfc', compact('wellSamples', 'chem'));
     }
 
 
