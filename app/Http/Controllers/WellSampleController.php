@@ -2,6 +2,7 @@
 
 use App\WellSample;
 use App\Chemical;
+use App\Well;
 use DB;
 
 class WellSampleController extends Controller {
@@ -45,7 +46,8 @@ class WellSampleController extends Controller {
     public function wellChart($wellName) 
     {
         $wellSamples = WellSample::wellSampleByWell($wellName)->get();
-        return view('pages.wellsamplechart_bywell', compact('wellSamples'));
+        $well = Well::well($wellName)->get();
+        return view('pages.wellsamplechart_bywell', compact('wellSamples', 'well'));
     }
 
 
