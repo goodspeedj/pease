@@ -29,4 +29,18 @@ class Well extends Model
                 ->orderBy('pfcAvg', 'DESC');
     }
 
+
+    /**
+     * Query to return Well names
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWell($query, $wellName)
+    {
+        return $query
+                ->select('Well.wellName', 'Well.wellDesc', 'Well.wellActive', 'Well.wellYeild', 'WellType.wellType', 'WellType.wellTypeID')
+                ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID')
+                ->where('Well.wellName', '=', $wellName);
+    }
+
 }
