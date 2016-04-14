@@ -54,7 +54,7 @@
         <th>PFUnA</th>
       </thead>
       <tbody>
-        <tr>
+        <tr style="background-color: #FFF5EE">
           <td class="bold">Provisional Health Advisory</td>
           <td align="center">-</td>
           <td align="center">-</td>
@@ -80,32 +80,37 @@
           <td align="center">-</td>
           <td align="center">-</td>
         </tr>
+        {{{ $wellSamples[20]->PFDoA or 'Default'  }}}
         @foreach ($wellSamples as $wellSample)
+
+
+          
+          
           <tr>
             <td width="400px" align="center">{{ $wellSample->sampleDate }}</td>
-            <td align="center">{{ $wellSample->FTS62 }} <sub>{{ $wellSample->FTS62Note }}</sub></td>
-            <td align="center">{{ $wellSample->FTS82 }} <sub>{{ $wellSample->FTS82Note }}</sub></td>
-            <td align="center">{{ $wellSample->EtFOSA }} <sub>{{ $wellSample->EtFOSANote }}</sub></td>
-            <td align="center">{{ $wellSample->EtFOSE }} <sub>{{ $wellSample->EtFOSENote }}</sub></td>
-            <td align="center">{{ $wellSample->MeFOSA }} <sub>{{ $wellSample->MeFOSANote }}</sub></td>
-            <td align="center">{{ $wellSample->MeFOSE }} <sub>{{ $wellSample->MeFOSENote }}</sub></td>
-            <td align="center">{{ $wellSample->PFBS }} <sub>{{ $wellSample->PFBSNote }}</sub></td>
-            <td align="center">{{ $wellSample->PFBA }} <sub>{{ $wellSample->PFBANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFDS }} <sub>{{ $wellSample->PFDSNote }}</sub></td>
-            <td align="center">{{ $wellSample->PFDA }} <sub>{{ $wellSample->PFDANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFDoA }} <sub>{{ $wellSample->PFDoANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFHpS }} <sub>{{ $wellSample->PFHpSNote }}</sub></td>
-            <td align="center">{{ $wellSample->PFHpA }} <sub>{{ $wellSample->PFHpANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFHxS }} <sub>{{ $wellSample->PFHxSNote }}</sub></td>
-            <td align="center">{{ $wellSample->PFHxA }} <sub>{{ $wellSample->PFHxANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFNA }} <sub>{{ $wellSample->PFNANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFOSA }} <sub>{{ $wellSample->PFOSANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFOS }} <sub>{{ $wellSample->PFOSNote }}</sub></td>
-            <td align="center">{{ $wellSample->PFOA }} <sub>{{ $wellSample->PFOANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFPeA }} <sub>{{ $wellSample->PFPeANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFTeDA }} <sub>{{ $wellSample->PFTeDANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFTrDA }} <sub>{{ $wellSample->PFTrDANote }}</sub></td>
-            <td align="center">{{ $wellSample->PFUnA }} <sub>{{ $wellSample->PFUnANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->FTS62) }} <sub>{{ $wellSample->FTS62Note }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->FTS82) }} <sub>{{ $wellSample->FTS82Note }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->EtFOSA) }} <sub>{{ $wellSample->EtFOSANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->EtFOSE) }} <sub>{{ $wellSample->EtFOSENote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->MeFOSA) }} <sub>{{ $wellSample->MeFOSANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->MeFOSE) }} <sub>{{ $wellSample->MeFOSENote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFBS) }} <sub>{{ $wellSample->PFBSNote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFBA) }} <sub>{{ $wellSample->PFBANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFDS) }} <sub>{{ $wellSample->PFDSNote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFDA) }} <sub>{{ $wellSample->PFDANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFDoA) }}<sub>{{ $wellSample->PFDoANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFHpS) }} <sub>{{ $wellSample->PFHpSNote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFHpA) }} <sub>{{ $wellSample->PFHpANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFHxS) }} <sub>{{ $wellSample->PFHxSNote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFHxA) }} <sub>{{ $wellSample->PFHxANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFNA) }} <sub>{{ $wellSample->PFNANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFOSA) }} <sub>{{ $wellSample->PFOSANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFOS) }} <sub>{{ $wellSample->PFOSNote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFOA) }} <sub>{{ $wellSample->PFOANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFPeA) }} <sub>{{ $wellSample->PFPeANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFTeDA) }} <sub>{{ $wellSample->PFTeDANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFTrDA) }} <sub>{{ $wellSample->PFTrDANote }}</sub></td>
+            <td align="center">{{ checkForZeroAndBlank($wellSample->PFUnA) }} <sub>{{ $wellSample->PFUnANote }}</sub></td>
           </tr>
         @endforeach
       </tbody>
@@ -113,11 +118,13 @@
 
     <small>
       Notes: <br />
-      All concentrations in &#181;g/L - micrograms per liter<br />
-      All values in micrograms per liter<br />
+      All concentrations in &#181;g/L - micrograms per liter.<br /> 
+      0.0001 micrograms per liter equate to 100 parts per trillion<br />
       D - duplicate sample<br />
       J - The result is an estimated value<br />
       B - Detected in Blank<br />
+      NA - Not Analyzed<br />
+      ND - Not Detected
     </small>
     
 @stop
@@ -133,6 +140,8 @@
         var parts = pathname.split("/");
         var lastRoute = parts[parts.length - 1];
         var selected = $("#well-select li a[href|="+lastRoute+"]").text();
+
+        $('td:contains("NA"),td:contains("ND")').css('color', 'gray');
 
         $(document).ready(function() {
             $('#table').DataTable( {

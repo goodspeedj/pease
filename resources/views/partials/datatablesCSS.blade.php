@@ -7,4 +7,10 @@
 	.bold {
 		font-weight: bold;
 	}
+	.gray {
+		color: gray;
+	}
+	th {
+		background-color: #E5E4E2;
+	}
 </style>
