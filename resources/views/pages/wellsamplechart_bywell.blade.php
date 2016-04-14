@@ -46,7 +46,16 @@
 @stop
 
 @section('content')
-    <h3>Well Testing Samples</h3>
+    <h3 id="title">{{ $well[0]->wellDesc }} Samples by PFC</h3>
+    @if ($well[0]->wellActive == 'Y')
+      <h5>Status: Active</h5>
+    @endif
+
+    @if ($well[0]->wellActive == 'N')
+      <h5>Status: Inactive</h5>
+    @endif
+
+    <h5>Type: {{ $well[0]->wellType }}</h5>
 
     <div id="chart"></div>
 
