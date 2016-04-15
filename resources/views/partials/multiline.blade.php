@@ -141,8 +141,8 @@ function multilineChart() {
                       .style("opacity", 0.8);
                   tooltipSummary
                       .html(d.key)
-                        .style("left", (d3.event.pageX + 10) + "px")
-                        .style("top", (d3.event.pageY - 25) + "px");
+                        .style("left", (d3.event.pageX - 350) + "px")
+                        .style("top", (d3.event.pageY - 100) + "px");
               })
               .on("mouseout", function(d) {
                   // Make the line normal again
@@ -202,8 +202,8 @@ function multilineChart() {
                         .style("opacity", 0.8);
                     tooltipDetail
                         .html("<strong>" + longDesc(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
-                        .style("left", (d3.event.pageX + 10) + "px")
-                        .style("top", (d3.event.pageY - 25) + "px");
+                        .style("left", (d3.event.pageX - 350) + "px")
+                        .style("top", (d3.event.pageY - 100) + "px");
                 })
                 .on("mouseout", function(d) {
                     d3.select(this).transition().duration(transitionTimeDuration)
