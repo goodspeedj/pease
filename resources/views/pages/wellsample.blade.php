@@ -28,32 +28,32 @@
 
     <table id="table" class="table table-striped table-bordered small" cellspacing="0" width="100%">
       <thead>
-        <th>Date</th>
-        <th>6:2 FTS</th>
-        <th>8:2 FTS</th>
-        <th>EtFOSA</th>
-        <th>EtFOSE</th>
-        <th>MeFOSA</th>
-        <th>MeFOSE</th>
-        <th>PFBS</th>
-        <th>PFBA</th>
-        <th>PFDS</th>
-        <th>PFDA</th>
-        <th>PFDoA</th>
-        <th>PFHpS</th>
-        <th>PFHpA</th>
-        <th>PFHxS</th>
-        <th>PFHxA</th>
-        <th>PFNA</th>
-        <th>PFOSA</th>
-        <th>PFOS</th>
-        <th>PFOA</th>
-        <th>PFPeA</th>
-        <th>PFTeDA</th>
-        <th>PFTrDA</th>
-        <th>PFUnA</th>
-      </thead>
-      <tbody>
+        <tr>
+          <th>Date</th>
+          <th>6:2 FTS</th>
+          <th>8:2 FTS</th>
+          <th>EtFOSA</th>
+          <th>EtFOSE</th>
+          <th>MeFOSA</th>
+          <th>MeFOSE</th>
+          <th>PFBS</th>
+          <th>PFBA</th>
+          <th>PFDS</th>
+          <th>PFDA</th>
+          <th>PFDoA</th>
+          <th>PFHpS</th>
+          <th>PFHpA</th>
+          <th>PFHxS</th>
+          <th>PFHxA</th>
+          <th>PFNA</th>
+          <th>PFOSA</th>
+          <th>PFOS</th>
+          <th>PFOA</th>
+          <th>PFPeA</th>
+          <th>PFTeDA</th>
+          <th>PFTrDA</th>
+          <th>PFUnA</th>
+        </tr>
         <tr style="background-color: #FFF5EE">
           <td class="bold">Provisional Health Advisory</td>
           <td align="center">-</td>
@@ -80,10 +80,12 @@
           <td align="center">-</td>
           <td align="center">-</td>
         </tr>
-
+      </thead>
+      
+      <tbody>
         @foreach ($wellSamples as $wellSample)
           <tr>
-            <td width="400px" align="center">{{ $wellSample->sampleDate }}</td>
+            <td align="center">{{ $wellSample->sampleDate }}</td>
             <td align="center">{{ checkForZeroAndBlank($wellSample->FTS62) }} <sub>{{ $wellSample->FTS62Note }}</sub></td>
             <td align="center">{{ checkForZeroAndBlank($wellSample->FTS82) }} <sub>{{ $wellSample->FTS82Note }}</sub></td>
             <td align="center">{{ checkForZeroAndBlank($wellSample->EtFOSA) }} <sub>{{ $wellSample->EtFOSANote }}</sub></td>
@@ -140,41 +142,8 @@
         $('td:contains("NA"),td:contains("ND")').css('color', 'gray');
 
         $(document).ready(function() {
-            $('#table').DataTable( {
-                rowCallback: function(row, data, index) {
-                  data.forEach(function(d, i) {
-                    if (index > 0) {
-                        if (parseFloat(d) > 1 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css({'background-color': '#67000d', 'color': 'white'})  
-                        } 
-                        else if (parseFloat(d) > 0.2 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css({'background-color': '#a50f15', 'color': 'white'})  
-                        }
-                        else if (parseFloat(d) > 0.1 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#cb181d')  
-                        }
-                        else if (parseFloat(d) > 0.05 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#ef3b2c')  
-                        }
-                        else if (parseFloat(d) > 0.009 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fb6a4a')  
-                        }
-                        else if (parseFloat(d) > 0.005 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fc9272')  
-                        }
-                        else if (parseFloat(d) > 0.001 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fcbba1')  
-                        }
-                        else if (parseFloat(d) > 0.0005 && i > 0 && d != null) { 
-                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fee0d2')  
-                        }
-                        else {
-                          console.log("ba");
-                        }
-                    }
-                    
-                  })  
-                },
+            var table = $('#table').DataTable( {
+                "bSortCellsTop": true,
                 "columnDefs": [
                   {
                     "targets": [ 1 ],
@@ -211,10 +180,42 @@
                 ],
                 "order": [[ 0, 'desc' ], [1, 'asc']],
                 "pageLength": 20,
-                "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]
+                "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ],
+                rowCallback: function(row, data, index) {
+
+                  data.forEach(function(d, i) {
+                    //if (index > 0) {
+                        if (parseFloat(d) > 1 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css({'background-color': '#67000d', 'color': 'white'})  
+                        } 
+                        else if (parseFloat(d) > 0.2 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css({'background-color': '#a50f15', 'color': 'white'})  
+                        }
+                        else if (parseFloat(d) > 0.1 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#cb181d')  
+                        }
+                        else if (parseFloat(d) > 0.05 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#ef3b2c')  
+                        }
+                        else if (parseFloat(d) > 0.009 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fb6a4a')  
+                        }
+                        else if (parseFloat(d) > 0.005 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fc9272')  
+                        }
+                        else if (parseFloat(d) > 0.001 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fcbba1')  
+                        }
+                        else if (parseFloat(d) > 0.0005 && i > 0 && d != null) { 
+                          $(row).find('td:contains(' + parseFloat(d) + ')').css('background-color', '#fee0d2')  
+                        }
+                        else {
+                          $(row).css('background-color', '#ffffff')
+                        }
+                    //}
+                  })  
+                }
             } );
-
-
 
             $('#wells-button').text(selected).append(' <span class="caret"></span>');
         } );
