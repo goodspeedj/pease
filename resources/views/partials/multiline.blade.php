@@ -103,7 +103,7 @@ function multilineChart() {
             // Add the paths for the lines
             lines.append("path")
               .attr("class", function(d) {
-                  return "line " + d.key;
+                  return "line z_" + d.key;
               })
               .attr("d", function(d){
                   // our inner array is d.values from the nesting
@@ -175,7 +175,7 @@ function multilineChart() {
                 .data(nested_data) 
               .enter().append("g")
                 .attr("class", function(d) {
-                    return "circle " + d.key;
+                    return "circle z_" + d.key;
                 })
                 .style("display", function(d) {
                     if(d.visible === 1) {
@@ -223,7 +223,7 @@ function multilineChart() {
             legend.append("rect")
                 .attr("height",10)
                 .attr("width", 25)
-                .attr("class", function(d) { return d.key; })
+                .attr("class", function(d) { return "z_" + d.key; })
                 .attr("x", width + 30)
                 .attr("y", function(d,i) { return height - 495 + (i*25); })
                 .attr("stroke", function(d) { return color(d.key);})
@@ -241,7 +241,7 @@ function multilineChart() {
                     $('.legend').addClass('clicked');
                     setTimeout(function () { $('.legend').removeClass('clicked') }, 1000);
 
-                    var selectedPath = svg.select("path." + d.key);
+                    var selectedPath = svg.select("path.z_" + d.key);
 
                     if (d.visible === 1) {
                         d.visible = 0;
@@ -251,7 +251,7 @@ function multilineChart() {
 
                     rescaleY();
 
-                    svg.select("rect." + d.key).transition().duration(transitionTimeDuration)
+                    svg.select("rect.z_" + d.key).transition().duration(transitionTimeDuration)
                         .attr("fill", function(d) {
                             if (d.visible === 1) {
                                 return color(d.key);
@@ -261,7 +261,7 @@ function multilineChart() {
                         })
                     
                     
-                    svg.selectAll(".circle." + d.key).transition().duration(transitionTimeDuration)
+                    svg.selectAll(".circle.z_" + d.key).transition().duration(transitionTimeDuration)
                         .style("display", function(a) {
                             if(d.visible === 1) {
                                 return "inline";

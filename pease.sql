@@ -220,8 +220,8 @@ INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFPeA', 'Perflu
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFTeDA', 'Perfluorotetradecanoic acid', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFTrDA', 'Perfluorotridecanoic acid', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFUnA', 'Perfluoroundecanoic acid', null);
-INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('6:2 FTS', '6:2 Fluorotelomer sulfonate', null);
-INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('8:2 FTS', '8:2 Fluorotelomer sulfonate', null);
+INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('62 FTS', '6:2 Fluorotelomer sulfonate', null);
+INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('82 FTS', '8:2 Fluorotelomer sulfonate', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('EtFOSA', 'N-Ethyl perfluorooctane sulfonamide', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('EtFOSE', 'N-Ethyl perfluorooctane sulfonamidoethanol', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('MEFOSA', 'N-Methyl Perfluorooctane Sulfonamide', null);
