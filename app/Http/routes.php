@@ -31,14 +31,14 @@ Route::get('info', 'InfoController@index');
 /*
 | Provides the route for the exposure map
 */
-//Route::get('map', 'MapController@index');
+Route::get('wellmap', 'WellController@index');
+Route::get('wellmap/{pfc}', 'WellController@pfcMap');
 
 
 /*
-| Provides the route for the exposure map
+| Provides the route for the well sample listing
 */
-Route::get('wellmap', 'WellController@index');
-Route::get('wellmap/{pfc}', 'WellController@pfcMap');
+Route::get('wellsample/{wellName}', 'WellSampleController@wellSample');
 
 
 /*
@@ -63,39 +63,6 @@ Route::get('participant', 'ParticipantController@index');
 | Provides the route for the study listing
 */
 Route::get('study', 'StudyController@index');
-
-
-/*
-| Provides the route for the well sample listing
-*/
-Route::get('wellsample', 'WellSampleController@index');
-Route::get('wellsample/haven', 'WellSampleController@haven');
-Route::get('wellsample/smith', 'WellSampleController@smith');
-Route::get('wellsample/harrison', 'WellSampleController@harrison');
-Route::get('wellsample/collins', 'WellSampleController@collins');
-Route::get('wellsample/portsmouth', 'WellSampleController@portsmouth');
-Route::get('wellsample/wwtp', 'WellSampleController@wwtp');
-Route::get('wellsample/des', 'WellSampleController@des');
-Route::get('wellsample/gbk_pre', 'WellSampleController@gbk_pre');
-Route::get('wellsample/gbk_post1', 'WellSampleController@gbk_post1');
-Route::get('wellsample/gbk_post2', 'WellSampleController@gbk_post2');
-Route::get('wellsample/dsc_pre', 'WellSampleController@dsc_pre');
-Route::get('wellsample/dsc_post', 'WellSampleController@dsc_post');
-Route::get('wellsample/firestation', 'WellSampleController@firestation');
-Route::get('wellsample/csw-1d', 'WellSampleController@csw-1d');
-Route::get('wellsample/csw-1s', 'WellSampleController@csw-1s');
-Route::get('wellsample/csw-2r', 'WellSampleController@csw-2r');
-Route::get('wellsample/hmw-3', 'WellSampleController@hmw-3');
-Route::get('wellsample/hmw-8r', 'WellSampleController@hmw-8r');
-Route::get('wellsample/hmw-14', 'WellSampleController@hmw-14');
-Route::get('wellsample/hmw-15', 'WellSampleController@hmw-15');
-Route::get('wellsample/smw-a', 'WellSampleController@smw-a');
-Route::get('wellsample/smw-1', 'WellSampleController@smw-1');
-Route::get('wellsample/smw-13', 'WellSampleController@smw-13');
-Route::get('wellsample/psw-1', 'WellSampleController@psw-1');
-Route::get('wellsample/psw-2', 'WellSampleController@psw-2');
-
-
 
 
 /*
