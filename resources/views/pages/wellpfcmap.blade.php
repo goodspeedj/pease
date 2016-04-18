@@ -32,7 +32,7 @@
       var styles = [
         {
           stylers: [
-            { saturation: -90 }
+            { saturation: -50 }
           ]
         },{
           featureType: "road",
@@ -54,25 +54,53 @@
 
         wellData.forEach(function(entry) {
             var color;
+            var size;
             var pfcAverage = Math.round(entry.pfcAvg * 1000) / 1000;
 
-            if(entry.wellType === 'Production Well') {
-                color = '#1F45FC';
-            } else if(entry.wellType === 'Distribution Point') {
-                color = '#FBB917';
-            } else {
-                color = '#4CC417';
+            if (pfcAverage > 1) { 
+              color = '#67000d';
+            } 
+            else if (pfcAverage > 0.2) { 
+              color = '#a50f15';
+            }
+            else if (pfcAverage > 0.1) { 
+              color = '#cb181d';
+            }
+            else if (pfcAverage > 0.05) { 
+              color = '#ef3b2c';  
+            }
+            else if (pfcAverage > 0.009) { 
+              color = '#fb6a4a';  
+            }
+            else if (pfcAverage > 0.005) { 
+              color = '#fc9272';  
+            }
+            else if (pfcAverage > 0.001) { 
+              color = '#fcbba1';  
+            }
+            else if (pfcAverage > 0.0005) { 
+              color = '#fee0d2';  
+            }
+            else {
+              color = '#B5EAAA';
             }
 
-            if(entry.wellActive === 'N') {
-                color = 'red';
+            if(entry.wellType === 'Production Well') {
+                //color = '#1F45FC';
+                size = 30;
+            } else if(entry.wellType === 'Distribution Point') {
+                //color = '#FBB917';
+                size = 15;
+            } else {
+                //color = '#4CC417';
+                size = 7;
             }
             
             var marker = new google.maps.Marker({
               position: {lat: Number(entry.wellLat), lng: Number(entry.wellLong)},
               map: map,
-              icon: getMarker((entry.pfcAvg * 1000) + 1, color),
-              title: entry.wellDesc + "\n" + pfcAverage
+              icon: getMarker(size, color),
+              title: entry.wellDesc + "\n" + "PFC Average: " + pfcAverage
             });
 
         });
@@ -118,7 +146,7 @@
           var circle = {
             path: google.maps.SymbolPath.CIRCLE,
             fillColor: color,
-            fillOpacity: .6,
+            fillOpacity: .9,
             scale: diameter,
             strokeColor: 'white',
             strokeWeight: .5
