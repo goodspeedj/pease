@@ -16,11 +16,9 @@
         <span class="caret"></span>
       </button>
       <ul id="well-select" class="dropdown-menu" aria-labelledby="wells-button">
-        <li><a href="haven" class="active">Haven</a></li>
-        <li><a href="smith">Smith</a></li>
-        <li><a href="harrison">Harrison</a></li>
-        <li><a href="wwtp">WWTP</a></li>
-        <li><a href="des">DES</a></li>
+        @foreach ($wells as $well)
+          <li><a href="{{ $well->wellName}}" class="active">{{ $well->wellDesc}}</a></li>
+        @endforeach
       </ul>
     </div>
 

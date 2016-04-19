@@ -34,7 +34,8 @@ class WellSampleController extends Controller {
     public function wellSample($wellName) 
     {
         $wellSamples = WellSample::crosstab($wellName)->get();
-        return view('pages.wellsample', compact('wellSamples'));
+        $wells = Well::allWells()->get();
+        return view('pages.wellsample', compact('wellSamples', 'wells'));
     }
 
 

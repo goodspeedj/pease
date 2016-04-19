@@ -31,7 +31,7 @@ class Well extends Model
 
 
     /**
-     * Query to return Well names
+     * Query to return one Well data set
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
@@ -41,6 +41,19 @@ class Well extends Model
                 ->select('Well.wellName', 'Well.wellDesc', 'Well.wellActive', 'Well.wellYeild', 'WellType.wellType', 'WellType.wellTypeID')
                 ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID')
                 ->where('Well.wellName', '=', $wellName);
+    }
+
+
+    /**
+     * Query to return all Well data sets
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeAllWells($query)
+    {
+        return $query
+                ->select('Well.wellName', 'Well.wellDesc', 'Well.wellActive', 'Well.wellYeild', 'WellType.wellType', 'WellType.wellTypeID')
+                ->join('WellType', 'Well.wellTypeID', '=', 'WellType.wellTypeID');
     }
 
 }
