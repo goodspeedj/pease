@@ -94,7 +94,8 @@
         .dimKey(function(d) { return d.wellName; })
         .longDesc(function(d) {return d.wellDesc; })
         .sortBy("wellID")
-        .dimensions(dimensions);
+        .dimensions(dimensions)
+        .seriesVal(function(d) {return d.shortName; });
 
        d3.select("#chart").datum(data).call(chart);
 

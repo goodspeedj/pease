@@ -96,7 +96,8 @@
       var chart = multilineChart()
             .dimKey(function(d) { return d.shortName; })
             .longDesc(function(d) {return d.longName; })
-            .sortBy("chemID");
+            .sortBy("chemID")
+            .seriesVal(function(d) {return d.shortName; });
 
       d3.select("#chart").datum(data).call(chart);
 

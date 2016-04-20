@@ -130,7 +130,7 @@ function multilineChart() {
                       .style("stroke-width", "4px");
 
                   d3.selectAll(".circle.z_" + d.key + " circle").transition().duration(transitionTimeDuration)
-                      .attr("r", function(d, i) { console.log("fds"); return 4 })
+                      .attr("r", function(d, i) { return 4 })
 
                   // Fade out the other lines
                   var otherlines = $(".line").not("path.z_" + d.key);
@@ -209,8 +209,8 @@ function multilineChart() {
                     tooltipDetail.transition().duration(transitionTimeDuration)
                         .style("opacity", 0.8);
                     tooltipDetail
-                        .html("<strong>" + longDesc(d) + "</strong><br />" + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
-                        .style("left", (d3.event.pageX - 350) + "px")
+                        .html("<strong>" + longDesc(d) + "</strong><br />" + seriesVal(d) + ": " + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
+                        .style("left", (d3.event.pageX - 400) + "px")
                         .style("top", (d3.event.pageY - 100) + "px");
                 })
                 .on("mouseout", function(d) {
@@ -384,10 +384,17 @@ function multilineChart() {
         return chart;
     };
 
-    // Get/set the dimensions
+    // Get/set the description
     chart.longDesc = function(value) {
         if (!arguments.length) return longDesc;
         longDesc = value;
+        return chart;
+    };
+
+    // Get/set the series
+    chart.seriesVal = function(value) {
+        if (!arguments.length) return seriesVal;
+        seriesVal = value;
         return chart;
     };
 
