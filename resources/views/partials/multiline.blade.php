@@ -27,6 +27,14 @@ function multilineChart() {
                 return a.values[0][sortBy] - b.values[0][sortBy];
             });
 
+            var color = d3.scale.ordinal()
+              .domain(d3.extent(nested_data, function(d) { return d.key; }))
+              .range(["#ffffff", "#ef8ead", "#f28f99", "#f09287", "#e99778",
+                      "#de9d6b", "#cfa464", "#beaa62", "#abb065", "#96b56e",
+                      "#7fb97c", "#67bc8d", "#4bbea0", "#28beb4", "#00bec7",
+                      "#00bcd8", "#13bae5", "#46b5ef", "#6cb0f3", "#8daaf2",
+                      "#aaa3ec", "#c39ce0", "#d795d1", "#e691c0"]);
+
             color.domain(nested_data.map(function(d) {
                 return dimKey(d);
             }));
