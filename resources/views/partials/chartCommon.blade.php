@@ -11,9 +11,7 @@ var hoverDate = d3.time.format("%m-%d-%y");
 var x = d3.time.scale().range([0, width]);
 var y = d3.scale.linear().range([height, 0]);
 var len = 23;
-var color = d3.scale.linear().domain([1, len])
-              //.interpolate(d3.interpolateHcl)
-              .range([d3.rgb("#990012"), d3.rgb("#52D017")]);
+
 //var color = d3.scale.category20();
 
 var xAxis = d3.svg.axis()

@@ -129,17 +129,17 @@ function multilineChart() {
                   d3.select(this).transition().duration(transitionTimeDuration)
                       .style("stroke-width", "4px");
 
-                  d3.selectAll(".circle." + d.key + " circle").transition().duration(transitionTimeDuration)
+                  d3.selectAll(".circle.z_" + d.key + " circle").transition().duration(transitionTimeDuration)
                       .attr("r", function(d, i) { console.log("fds"); return 4 })
 
                   // Fade out the other lines
-                  var otherlines = $(".line").not("path." + d.key);
+                  var otherlines = $(".line").not("path.z_" + d.key);
                   d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
                       .style("opacity", 0.3)
                       .style("stroke-width", 1.5)
                       .style("stroke", "gray");
 
-                  var othercircles = $("circle").not(".circle." + d.key + " circle");
+                  var othercircles = $("circle").not(".circle.z_" + d.key + " circle");
                   d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
                       .style("opacity", 0.3)
                       .style("stroke", "gray");
@@ -157,18 +157,18 @@ function multilineChart() {
                   d3.select(this).transition().duration(transitionTimeDuration)
                       .style("stroke-width", "1.5px");
 
-                  d3.selectAll(".circle." + d.key + " circle").transition().duration(transitionTimeDuration)
+                  d3.selectAll(".circle.z_" + d.key + " circle").transition().duration(transitionTimeDuration)
                       //.duration(100)
                       .attr("r", function(d, i) { return 2 })
 
                   // Make the other lines normal again
-                  var otherlines = $('.line').not("path." + d.key);
+                  var otherlines = $('.line').not("path.z_" + d.key);
                   d3.selectAll(otherlines).transition().duration(transitionTimeDuration)
                       .style("opacity", 1)
                       .style("stroke-width", 1.5)
                       .style("stroke", function(d) { return color(d.key); });
 
-                  var othercircles = $("circle").not(".circle." + d.key + " circle");
+                  var othercircles = $("circle").not(".circle.z_" + d.key + " circle");
                   d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
                       .style("opacity", 1)
                       .style("stroke", function(d) { return color(dimKey(d)); });
