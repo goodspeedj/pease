@@ -143,14 +143,6 @@ function multilineChart() {
                   d3.selectAll(othercircles).transition().duration(transitionTimeDuration)
                       .style("opacity", 0.3)
                       .style("stroke", "gray");
-
-                  // Show tooltips
-                  tooltipSummary.transition()
-                      .style("opacity", 0.8);
-                  tooltipSummary
-                      .html(d.key)
-                        .style("left", (d3.event.pageX - 350) + "px")
-                        .style("top", (d3.event.pageY - 100) + "px");
               })
               .on("mouseout", function(d) {
                   // Make the line normal again
@@ -174,8 +166,8 @@ function multilineChart() {
                       .style("stroke", function(d) { return color(dimKey(d)); });
 
                   // Hide the tooltip
-                  tooltipSummary.transition().duration(transitionTimeDuration)
-                      .style("opacity", 0);
+                  //tooltipSummary.transition().duration(transitionTimeDuration)
+                  //    .style("opacity", 0);
               });
 
             // bind the data for the circles
@@ -205,21 +197,34 @@ function multilineChart() {
                     d3.select(this).transition().duration(transitionTimeDuration)
                         .attr("r", function(d, i) { return 4 })
 
-                    // Show tooltips
+                    /* Show tooltips
                     tooltipDetail.transition().duration(transitionTimeDuration)
                         .style("opacity", 0.8);
                     tooltipDetail
                         .html("<strong>" + longDesc(d) + "</strong><br />" + seriesVal(d) + ": " + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate)))
-                        .style("left", (d3.event.pageX - 400) + "px")
-                        .style("top", (d3.event.pageY - 100) + "px");
+                        .style("left", (d3.event.pageX - 200) + "px")
+                        .style("top", (d3.event.pageY - 70) + "px");
+                    */
                 })
                 .on("mouseout", function(d) {
                     d3.select(this).transition().duration(transitionTimeDuration)
                         .attr("r", function(d, i) { return 2 })
 
                     // Hide the tooltip
-                    tooltipDetail.transition().duration(transitionTimeDuration).style("opacity", 0);
+                    //tooltipDetail.transition().duration(transitionTimeDuration).style("opacity", 0);
                 });
+
+
+            $('circle').tipsy({
+                gravity: 'w',
+                html: true,
+                offset: 7,
+                opacity: 0.7,
+                title: function() {
+                  var d = this.__data__;
+                  return "<strong>" + longDesc(d) + "</strong><br />" + seriesVal(d) + ": " + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate));
+                }
+            })
 
             // bind the data for the legend
             var legend = svg.selectAll(".legend")
