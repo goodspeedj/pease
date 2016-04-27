@@ -365,6 +365,10 @@ function multilineChart() {
                 var width = parseInt(d3.select('#chart').style('width')) - (margin.left + margin.right),
                     height = parseInt(d3.select('#chart').style('height')) - (margin.top + margin.bottom);
 
+                d3.select("svg")
+                    .attr("width", width + margin.left + margin.right)
+                    .attr("height", height + margin.top + margin.bottom);
+
                 console.log("height: " + height + "\nwidth: " + width);
 
                 x.range([0, width]);
