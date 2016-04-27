@@ -5,19 +5,38 @@
 @section('content')
     <div class="row">
 
+        <div class="col-md-8">
+          <div id="map"></div>
+        </div>
+          
         <div class="col-md-4">
+
           <h4 class="center">Pease International Tradeport</h4>
           <h5 class="center">Portsmouth, NH</h5>
           <p>This map shows the locations of the production wells, sentry wells and distribution 
              points on the Pease Tradeport.</p>
-          <p>The production wells are shown with a blue circle and the inactive well, Haven, 
-             is shown with a red circle.  The sentry wells are shown in green and the distribution
-             points that have been measured are shown in orange.  The size of the circle represents 
-             the level of PFC contamination in that well.</p>
-        </div>
-        <div class="col-md-8">
-
-          <div id="map"></div>
+          <p>The average level of contamination is shown by the color scale below.  The largest 
+             circles are Production Wells, the medium circles are Distribution Points and the 
+             smallest circles are Sentry Wells.</p>
+          <p>&nbsp;</p>
+          <div id="legend">
+            <div class="col-md-2">
+              <svg width="70" height="500">
+                <circle cx="25" cy="25" r="15" stroke="#67000d" fill="#67000d" />
+                <circle cx="25" cy="75" r="15" stroke="#a50f15" fill="#a50f15" />
+                <circle cx="25" cy="125" r="15" stroke="#cb181d" fill="#cb181d" />
+                <circle cx="25" cy="175" r="15" stroke="#ef3b2c" fill="#ef3b2c" />
+                <circle cx="25" cy="225" r="15" stroke="#fb6a4a" fill="#fb6a4a" />
+                <circle cx="25" cy="275" r="15" stroke="#fc9272" fill="#fc9272" />
+                <circle cx="25" cy="325" r="15" stroke="#fee0d2" fill="#fee0d2" />
+                <circle cx="25" cy="375" r="15" stroke="#B5EAAA" fill="#B5EAAA" />
+              </svg>
+            </div>
+            <div class="col-md-10">
+              
+            </div>
+            
+          </div>
 
         </div>
 
@@ -48,7 +67,7 @@
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 43.070704, lng: -70.806700},
-          zoom: 15
+          zoom: 14
         });
         map.setOptions({ styles: styles });
 

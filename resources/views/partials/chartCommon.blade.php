@@ -1,7 +1,10 @@
 // Set the dimensions of the canvas / graph
 var margin = {top: 30, right: 200, bottom: 70, left: 50},
-    width = 1200 - margin.left - margin.right,
-    height = 600 - margin.top - margin.bottom;
+    width = parseInt(d3.select('#chart').style('width')) - (margin.left + margin.right),
+    height = parseInt(d3.select('#chart').style('height')) - (margin.top + margin.bottom);
+    //width = 1200 - margin.left - margin.right,
+    //height = 600 - margin.top - margin.bottom;
+    console.log(width);
 
 // Parse the date / time
 var parseDate = d3.time.format("%Y-%m-%d").parse;
@@ -32,7 +35,8 @@ var tooltipSummary = d3.select("#chart").append("div")
   .attr("class", "tooltipSummary")
   .style("opacity", 0);
 
-var svg = d3.select("#chart").append("svg")
+var svg = d3.select("#chart")
+  .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")

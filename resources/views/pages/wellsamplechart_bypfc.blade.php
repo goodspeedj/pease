@@ -9,8 +9,8 @@
 
 @section('content')
 
-    <h3 id="title">{{ $chem[0]->shortName }} Samples by Well</h3>
-    <h4>{{ $chem[0]->longName }}</h4>
+    <h4 id="title">{{ $chem[0]->shortName }} Samples by Well</h4>
+    <h5>{{ $chem[0]->longName }}</h5>
 
 
     <div id="chart"></div>
@@ -41,8 +41,8 @@
           { key: 'HMW-8R', value: 0 },
           { key: 'HMW-14', value: 1 },
           { key: 'HMW-15', value: 0 },
-          { key: 'SMW-A', value: 0 },
-          { key: 'SMW-1', value: 0 },
+          { key: 'SMW-A', value: 1 },
+          { key: 'SMW-1', value: 1 },
           { key: 'SMW-13', value: 0 },
           { key: 'PSW-1', value: 0 },
           { key: 'PSW-2', value: 0 }

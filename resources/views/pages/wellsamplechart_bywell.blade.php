@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <h3 id="title">{{ $well[0]->wellDesc }} Samples by PFC</h3>
+    <h4 id="title">{{ $well[0]->wellDesc }} Samples by PFC</h4>
     @if ($well[0]->wellActive == 'Y')
       <h5>Status: Active</h5>
     @endif

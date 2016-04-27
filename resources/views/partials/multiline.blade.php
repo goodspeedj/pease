@@ -194,7 +194,7 @@ function multilineChart() {
                 .attr("r", 2)
                 .on("mouseover", function(d) {
 
-                    d3.select(this).transition().duration(transitionTimeDuration)
+                    d3.select(this).transition().duration(200)
                         .attr("r", function(d, i) { return 4 })
 
                     /* Show tooltips
@@ -207,7 +207,7 @@ function multilineChart() {
                     */
                 })
                 .on("mouseout", function(d) {
-                    d3.select(this).transition().duration(transitionTimeDuration)
+                    d3.select(this).transition().duration(200)
                         .attr("r", function(d, i) { return 2 })
 
                     // Hide the tooltip
@@ -357,12 +357,72 @@ function multilineChart() {
             function updateCircles() {
                 svg.selectAll(".circle circle")
                     .transition().duration(transitionTimeDuration)
-                    .attr("cy", function(d, i) { 
-                      return y(d.pfcLevel) 
-                    });
+                    .attr("cy", function(d, i) { return y(d.pfcLevel) });
+            }
 
+            // make chart responsive
+            function resize() {
+                var width = parseInt(d3.select('#chart').style('width')) - (margin.left + margin.right),
+                    height = parseInt(d3.select('#chart').style('height')) - (margin.top + margin.bottom);
+
+                console.log("height: " + height + "\nwidth: " + width);
+
+                x.range([0, width]);
+                y.range([height, 0]);
+
+                /* Update the axis with the new scale */
+                svg.select('.x.axis')
+                  .attr("transform", "translate(0," + height + ")")
+                  .call(xAxis);
+
+                svg.select('.y.axis')
+                  .call(yAxis);
+
+                /* Force D3 to recalculate and update the line */
+                svg.selectAll('.line')
+                  .attr("d", function(d){
+                      // our inner array is d.values from the nesting
+                      return line(d.values);
+                  });
+
+                svg.select(".pfoaEPAHA")
+                  .attr("x1", 0)
+                  .attr("y1", y(epaPHA_PFOA))
+                  .attr("x2", width)
+                  .attr("y2", y(epaPHA_PFOA));
+
+                svg.select(".pfosEPAHA")
+                  .attr("x1", 0)
+                  .attr("y1", y(epaPHA_PFOS))
+                  .attr("x2", width)
+                  .attr("y2", y(epaPHA_PFOS));
+
+                svg.select(".pfoaEPAHAText")
+                  .attr("x", width - 170)
+                  .attr("y", y(epaPHA_PFOA) - 10);
+
+                svg.select(".pfosEPAHAText")
+                  .attr("x", width - 170)
+                  .attr("y", y(epaPHA_PFOS) - 10);
+
+                svg.selectAll(".legendLabel")
+                  .attr("x", width + 65)
+                  .attr("y", function(d,i) { return height - 487 + (i*25); });
+
+                svg.selectAll("rect")
+                  .attr("x", width + 30)
+                  .attr("y", function(d,i) { return height - 495 + (i*25); });
+
+                svg.selectAll(".circle circle")
+                    .attr("cx", function(d, i) { return x(d.sampleDate) })
+                    .attr("cy", function(d, i) { return y(d.pfcLevel) });
 
             }
+
+            d3.select(window).on('resize', resize); 
+
+
+            //resize();
 
         });
 
