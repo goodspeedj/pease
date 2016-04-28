@@ -77,7 +77,7 @@ class WellSample extends Model
         return $query
                 ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
                 ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
-                ->select('WellSample.sampleDate', 'Well.wellName', 'Chemical.shortName', 'Chemical.longName', 'WellSample.pfcLevel', 'Chemical.chemID')
+                ->select('WellSample.sampleID', 'WellSample.sampleDate', 'Well.wellName', 'Chemical.shortName', 'Chemical.longName', 'WellSample.pfcLevel', 'Chemical.chemID')
                 ->where('Well.wellName', '=', $wellName)
                 ->orderBy('WellSample.sampleDate', 'desc')
                 ->orderBy('Chemical.shortName', 'asc');
@@ -94,7 +94,7 @@ class WellSample extends Model
         return $query
                 ->join('Chemical', 'WellSample.chemID', '=', 'Chemical.chemID')
                 ->join('Well', 'WellSample.wellID', '=', 'Well.wellID')
-                ->select('WellSample.sampleDate', 'Chemical.chemID', 'Chemical.shortName', 'WellSample.pfcLevel', 'Well.wellName', 'Well.wellDesc', 'Well.wellID')
+                ->select('WellSample.sampleID', 'WellSample.sampleDate', 'Chemical.chemID', 'Chemical.shortName', 'WellSample.pfcLevel', 'Well.wellName', 'Well.wellDesc', 'Well.wellID')
                 ->where('Chemical.shortName', '=', $pfc)
                 ->orderBy('WellSample.sampleDate', 'desc')
                 ->orderBy('Well.wellID', 'asc');
