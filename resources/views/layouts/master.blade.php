@@ -26,7 +26,7 @@
           <ul class="nav navbar-nav">
             <li><a href="/">Home</a></li>
             <li class="dropdown">
-              <a href="/wellsample/haven" role="button" aria-haspopup="true" aria-expanded="false">Well Samples - Tables</a>
+              <a href="/wellsample/Haven" role="button" aria-haspopup="true" aria-expanded="false">Well Samples - Tables</a>
             </li>
             <li class="dropdown">
               <a href="/wellsample/well/haven/chart" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Samples Charts - by Well<span class="caret"></span></a>
@@ -99,11 +99,13 @@
 
     </div>
 
+    <!--
     <footer class="footer">
       <div class="container">
         <p class="text-muted">Place sticky footer content here.</p>
       </div>
     </footer>
+    -->
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
