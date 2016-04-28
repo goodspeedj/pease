@@ -238,7 +238,7 @@ function multilineChart() {
                 .attr("width", 25)
                 .attr("class", function(d) { return "z_" + d.key; })
                 .attr("x", width + 30)
-                .attr("y", function(d,i) { return height - 495 + (i*25); })
+                .attr("y", function(d,i) { return i*25; })
                 .attr("stroke", function(d) { return color(d.key);})
                 .attr("fill", function(d) {
                     if (d.visible === 1) {
@@ -291,7 +291,7 @@ function multilineChart() {
             legend.append("text")
                 .attr("class", "legendLabel")
                 .attr("x", function(d) { return width + 65; })
-                .attr("y", function(d,i) { return height - 487 + (i*25); })
+                .attr("y", function(d,i) { return i*25 + 6; })
                 .text( function(d) { return d.key; })
                 .attr("font-size", "11px")
                 .attr("fill", "black");
@@ -411,11 +411,11 @@ function multilineChart() {
 
                 svg.selectAll(".legendLabel")
                   .attr("x", width + 65)
-                  .attr("y", function(d,i) { return height - 487 + (i*25); });
+                  .attr("y", function(d,i) { return i*25 + 6; });
 
                 svg.selectAll("rect")
                   .attr("x", width + 30)
-                  .attr("y", function(d,i) { return height - 495 + (i*25); });
+                  .attr("y", function(d,i) { return i*25; });
 
                 svg.selectAll(".circle circle")
                     .attr("cx", function(d, i) { return x(d.sampleDate) })

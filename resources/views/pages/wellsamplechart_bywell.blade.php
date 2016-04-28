@@ -19,6 +19,12 @@
 
     <h5>Type: {{ $well[0]->wellType }}</h5>
 
+    <hr>
+    <p>The chart below shows the PFC levels for {{ $well[0]->wellName }} from the samples taken since
+       April 2014.</p>
+    <p>To use the chart click on the legend rectangles to enable or disable different wells.  Hovering over
+       a data point will display details about that specific sample.</p>
+
     <div id="chart"></div>
 
     <script>

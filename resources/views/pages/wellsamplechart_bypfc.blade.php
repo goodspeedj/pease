@@ -11,6 +11,11 @@
 
     <h4 id="title">{{ $chem[0]->shortName }} Samples by Well</h4>
     <h5>{{ $chem[0]->longName }}</h5>
+    <hr>
+    <p>The chart below shows the PFC levels for {{ $chem[0]->shortName }} from the well samples taken since
+       April 2014.</p>
+    <p>To use the chart click on the legend rectangles to enable or disable different wells.  Hovering over
+       a data point will display details about that specific sample.</p>
 
 
     <div id="chart"></div>
