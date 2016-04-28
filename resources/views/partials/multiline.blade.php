@@ -222,7 +222,7 @@ function multilineChart() {
                 opacity: 0.7,
                 title: function() {
                   var d = this.__data__;
-                  return "<strong>" + longDesc(d) + "</strong><br />" + seriesVal(d) + ": " + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate));
+                  return "<strong>" + longDesc(d) + "</strong><br />" + d.sampleID + "<br />" + seriesVal(d) + ": " + d.pfcLevel + "<br />" + hoverDate(new Date(d.sampleDate));
                 }
             })
 
