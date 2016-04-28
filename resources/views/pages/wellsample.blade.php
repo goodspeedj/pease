@@ -8,7 +8,10 @@
 
 @section('content')
     <h3>Well Testing Samples</h3>
-
+    <p>The table below shows the levels of PFCs for each well and their sample dates.  Samples with higher PFC levels are shaded in increasing
+       darker shades of red.</p>
+    <p>Sampling for PFCs started in April 2014.  Due to the high levels of PFCs found the Haven Well was shut down in May 2014.</p>
+    <hr>
     <div class="dropdown">
       <strong>Well: </strong>
       <button class="btn btn-default dropdown-toggle" type="button" id="wells-button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
