@@ -220,8 +220,8 @@ INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFPeA', 'Perflu
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFTeDA', 'Perfluorotetradecanoic acid', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFTrDA', 'Perfluorotridecanoic acid', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('PFUnA', 'Perfluoroundecanoic acid', null);
-INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('62 FTS', '6:2 Fluorotelomer sulfonate', null);
-INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('82 FTS', '8:2 Fluorotelomer sulfonate', null);
+INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('62_FTS', '6:2 Fluorotelomer sulfonate', null);
+INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('82_FTS', '8:2 Fluorotelomer sulfonate', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('EtFOSA', 'N-Ethyl perfluorooctane sulfonamide', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('EtFOSE', 'N-Ethyl perfluorooctane sulfonamidoethanol', null);
 INSERT INTO Chemical (shortName, longName, epaPHALevel) VALUES ('MEFOSA', 'N-Methyl Perfluorooctane Sulfonamide', null);
@@ -6774,7 +6774,7 @@ INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) 
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 5, '2015-03-26', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 2, '2015-03-26', 0.012, 2);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 1, '2015-03-26', 0.006, 1);
-INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 14, '2015-03-26', 0.016 Q, null);
+INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 14, '2015-03-26', 0.016, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 15, '2015-03-26', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 16, '2015-03-26', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('HMW-8R_03262015', 17, 17, '2015-03-26', 0, null);
@@ -12804,7 +12804,7 @@ INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) 
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('SMW-1_12162015', 21, 15, '2015-12-16', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('SMW-1_12162015', 21, 16, '2015-12-16', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('SMW-1_12162015', 21, 17, '2015-12-16', 0, null);
-INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('DUP_12222015', 21, 18, '2015-12-22', 0.010 Q, null);
+INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('DUP_12222015', 21, 18, '2015-12-22', 0.010, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('DUP_12222015', 21, 19, '2015-12-22', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('DUP_12222015', 21, 20, '2015-12-22', 0, null);
 INSERT INTO WellSample (sampleID, wellID, chemID, sampleDate, pfcLevel, noteID) VALUES ('DUP_12222015', 21, 21, '2015-12-22', 0, null);

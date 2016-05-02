@@ -78,8 +78,8 @@
                 <li><a href="/wellsample/pfc/pfteda/chart">PFTeDA</a></li>
                 <li><a href="/wellsample/pfc/pftrda/chart">PFTrDA</a></li>
                 <li><a href="/wellsample/pfc/pfuna/chart">PFUnA</a></li>
-                <li><a href="/wellsample/pfc/62 FTS/chart">6:2 FTS</a></li>
-                <li><a href="/wellsample/pfc/82 FTS/chart">8:2 FTS</a></li>
+                <li><a href="/wellsample/pfc/62_FTS/chart">6:2 FTS</a></li>
+                <li><a href="/wellsample/pfc/82_FTS/chart">8:2 FTS</a></li>
                 <li><a href="/wellsample/pfc/etfosa/chart">EtFOSA</a></li>
                 <li><a href="/wellsample/pfc/etfose/chart">EtFOSE</a></li>
                 <li><a href="/wellsample/pfc/mefosa/chart">MeFOSA</a></li>
