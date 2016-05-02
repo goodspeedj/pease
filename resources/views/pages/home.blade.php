@@ -59,19 +59,19 @@
       <!-- Three columns of text below the carousel -->
       <div class="row">
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <a href="/wellsample/Haven"><img class="img-circle" src="img/table.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Well Samples</h2>
           <p>View the raw sample data in table form from each well on Pease.</p>
           <p><a class="btn btn-default" href="/wellsample/Haven" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <a href="/wellsample/well/haven/chart"><img class="img-circle" src="img/graph-red.png" alt="Graphs by Well" width="140" height="140"></a>
           <h2>Charts by Well</h2>
           <p>View the well sample data in chart form by the different wells on Pease.</p>
           <p><a class="btn btn-default" href="/wellsample/well/haven/chart" role="button">View details &raquo;</a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+          <a href="/wellsample/pfc/pfoa/chart"><img class="img-circle" src="img/graph-blue.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Charts by PFC</h2>
           <p>View the well sample data by the different PFCs found in each well on Pease</p>
           <p><a class="btn btn-default" href="/wellsample/pfc/pfoa/chart" role="button">View details &raquo;</a></p>
